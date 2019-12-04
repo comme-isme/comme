@@ -1,0 +1,44 @@
+//import 할 거 하기
+
+
+<LinearLayout 
+.
+.//마저 작성
+.
+android:id="@+id/mainlayout"
+android:orientation="vertical">
+
+
+	<//Mydraw의 주소
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent" />
+
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal">
+	
+		<button
+			android:text="배경색"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/BB"
+			android:onClick="BackgroundColorChange" />
+
+		<button
+			android:text="지우기"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/CB"
+			android:onClick="Clear" />
+
+		<button
+			android:text="페인트색"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/PCB"
+			android:onClick="PaintColorChange" />
+
+	</LinearLayout>
+
+</LinearLayout>
