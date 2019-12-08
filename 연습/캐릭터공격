@@ -1,0 +1,63 @@
+public class Player : MonoBehaviour{
+
+	Animator animaotr;
+	Rigidbody2D myrigidbody;
+	//[SerializeField]는 private 등으로 지정된 변수를 인스펙터 창에 표시 시켜줌
+	float speed=3;
+	
+	void Start(){
+		animator=GetComponent<Animator>();
+		myrigidbody=GetComponent<Rigidbody2D>();
+	}
+	
+	//공격의 딜레이
+	private float curTime; //지금 cooltime 시간
+	public float coolTime=0.5f;
+	//타격 범위
+	public Tranform pos;
+	public Vector2 boxSize;
+	
+	private void Update(){
+	
+		
+	if(curTime<=0){
+				//공격
+			if(Input.GetKey(KeyCode.Z)){
+				
+				//설정한 크기의 박스를 생성, 영역안의 충돌체들을 Collider2D배열로 반환
+				Collider2D[] collider2Ds=Physics2D.OverlapBoxAll( pos.position, boxSize,0);  //박스의 생성위치, 박스의 크기, 박스의 회전
+				
+				//collider2Ds의 값중 Enemy 태그만골라내기
+				foreach(Collider2D collider in collider2Ds){
+					
+					//tag설정 가능, enemy 태그 설정 한 뒤 골라내기
+					if(collider.tag=="Enemy"){
+						
+						//takedamage 함수는 Enemy 컴포넌트에 있다. 숫자에는 데미지를 넣으면 된다.
+						collider.GetComponent<Enemy>().TakeDamage(1);
+					
+					}
+													
+				}
+				
+				
+				
+				animaotr.SetTrigger("atk");  //트리거??
+				curTime=coolTime;
+			}
+	}
+	else{
+		curTime-=Time.deltaTime;
+	}
+}
+
+	//박스의 라인 그려주기
+	
+	private void OnDrawGizmos(){
+		Gizmos.color=Color.blue;
+		Gizmos.DrawWireCube(pos.position,boxSize);   //센터, 사이즈
+	}
+
+	
+	void FixedUpdate(){
+	}
