@@ -1,0 +1,69 @@
+public class PlayerAttack : MonoBehaviour{
+
+  //얘네는 유니티 인스펙터창에서 넣어주기
+  public GameObject bullet;
+  //하위오브젝트 생성해서 넣기
+  public transform pos;
+  public float cooltime;
+  private float curtime;
+
+  void Start(){
+  
+  
+  }
+  
+  
+  void Update(){
+    if(curtime<=0){
+     if(Input.GetKey(KeyCode.Z)){
+        //발사체 생성
+       Instantiate(bullet,pos.position);  //원본오브젝트, 생성위치, 회전
+       curtime=cooltime;
+     }
+     
+   }
+    curtime-=Time.deltaTime;
+  }
+
+
+
+
+
+
+
+public class bullet : MonoBehaviour{
+  public float speed;
+  public float distance;
+  public LayerMask isLayer;
+
+  void Start(){
+    
+    //Invoke 함수 : 일정 시간 후 함수 호출 가능 (호출할 함수, 지연시간)
+    Invoke("DestroyBullet",2);
+    
+  }
+  
+  void Update(){
+  
+    RaycastHit2D ray=Physics2D.Raycast(transform.position,transform.right,distance,isLayer);
+    //시작점, 방향, 길이,레이어선택
+    
+    if(ray.collider !=null{
+      if(ray.collider.tag=="Enemy"){
+        collider.GetComponent<Enemy>().hitEnemy();
+      }
+      DestroyBullet();
+    }
+    
+    //우측을 바라볼 때
+    if(transform.ratation.y==0){
+      transform.Translate(transform.right*speed*Time.deltTime);
+    }
+    else{
+      transform.Translate(transform.right*speed*Time.deltTime*(-1));
+    
+    }
+  void DestroyBullet(){
+    Destroy(gameObject);
+  }
+}
