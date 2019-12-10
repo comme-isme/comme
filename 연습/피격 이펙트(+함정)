@@ -1,0 +1,52 @@
+적에 대한 태그, 레이어 설정, 타일맵 하나를 더 만들어 spike(함정)로 이름 설정
+플레이어 레이어를, 두개로 나눈다.(player, playerdamaged)
+
+적과 함정은 충돌 하지 않게 하기
+-edit-project setting-피라미드에 체크 없애기
+playerdamaged 레이어 상태에서는 적과 닿지 않기(무적 상태 주기)
+
+//플레이어 클래스의 함수
+void OnCollisionEnter2D(Collision2D collision)
+{
+  if(collision.gameObject.tag=="Enemy"){ //적을 맞았을 때
+    OnDamaged(collision.transform.position);
+  } 
+ }
+ 
+ void OnDamaged(Vector2 targetPos)
+ { 
+    gameObject.layer=11;
+    //playerdamaged 레이어
+    
+    spriteRenderer.color = new Color(1,1,10.4f);
+    //마지막은 투명도
+    
+    //오른쪽에서 맞으면 오른쪽으로 튕겨나가기
+    int dirc= transform.position.x-targetPos.x>0 ?  1:-1
+    //이거는 찾아보자
+    
+    rigid.AddForce(new Vector2(dirc,1)*7,ForceMode2D.Impulse);
+    
+    //애니매이션 trigger
+    anim.SetTrigger("doDamaged");
+    
+    Invoke("OffDamaged",3);
+ }
+ 
+ //무적 풀기
+ void OffDamaged(){
+ 
+  gameObject.layer=10;
+  spriteRenderer.color=new Color(1,1,1,1);
+  
+ }
+ 
+ 
+ 
+ 
+애니메이션 화면에서 Trigger 
+any state(어떤 상태든 상관 없이)->내가 원하는 애니메이션->exit
+루프 타임 빼기
+
+
+ 
