@@ -18,7 +18,7 @@ public class Move : MonoBehaviour{
     }
     
     //방향 전환
-    if(Input.GetButtonUp("Horizontal")){
+    if(Input.GetButton("Horizontal")){
       spriterenderer.flipX=Input.GetAxisRaw("Horizontal")==-1;
       //뒤에 것이 참이면 참이 반환, filpX가 동작한다.
     }
