@@ -1,0 +1,63 @@
+canvas를 우선 만들고 pixel perfect를 켜준다.
+pixel ui(그림)을 넣고, 이미지 깨짐 방지를 위해 image type을 sliecd로 바꿔준다.
+그러기 위해서는 sprite edit을 해야한다. -> 모서리를 잡기 위해 변하지 않을 부분(border블록)을 설정한다.(모서리랑 그림)
+Anchor를 이용하여 아래쪽과 다 채우기를 설정(여백 설정 가능)
+ui에 text 만들기-> ui 안에 만들어라
+text도 anchor 이용(alt 누르면 길이 조절, shift도 눌르면 기준점 조절)
+
+이제 action 띄우자(데이터 전달)
+
+데이터 전달을 위한 매니저 생성(script)
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+//ui 프로그래밍
+using UnityEngine.UI;
+
+public class GameManger : MonoBehaviour
+{
+  public GameObject talkPanel;
+  public Text talkText;
+  public GameObject scanObject;
+  public bool isAction;
+  
+  public void Action(GameObject scanObj){
+    
+    if(isAction){ //exit Action
+      isAction=false;
+    }
+    else{ //Enter action
+      isAction=true;
+      scanObject=scanObj;
+      talkText.text="이것의 이름은" +scanObject.name+"이라고 한다.");
+    }
+     talkPanel.setActive(isAction);
+  } 
+}
+
+
+그리고 '플레이어' 컴포넌트에서 GameManager를 불러올 수 있는 권한 부여
+
+
+public class Player :MonoBehaviour{
+.
+.
+.
+  Public GameManager manager;
+  
+  if(Input.GetButtonDown("Jump")&&scanObject != null)
+    manager.Action(scanObject);
+}
+
+게임 매니저 인스펙터 창에 talk text 변수 채워주기
+플레이어에도 게임매니저 넣어주기
+
+h=Input.GetAxisRaw("Horizontal");
+    |
+    |   -> manager.isAction이 true라면 h는 0
+h=manager.isAction ? 0 : Input.GetAxisRaw("Horizontal");
+
+bool hDown = manger.Action ? flase : Input.GetButtonDown("Horizontal");
+
+
