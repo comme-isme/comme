@@ -1,0 +1,18 @@
+GetButtonDown 으로 키 입력을 받았을 때, 겹치게 눌렀을 경우 인식 못함
+->GetButton으로 변경
+
+//몬스터 잡기
+
+player
+
+void OnCollisionEnter2D(Collision2D collision)
+{
+  
+  if(collision.gameObject.tag=="Enemy"){
+      if(rigid.velocity.y<0 && transform.position.y>collision.transform.position){
+        collision.gameObject.OnAttack();
+      }
+      else
+        OnDamaged(collision.transform.position);
+      }
+  }
