@@ -1,0 +1,79 @@
+public class Move : MonoBehaviour{
+	
+	public float maxSpeed;   //시험 실행 중에 값을 바꾸려면 public을 달아라.
+	
+	Rigidbody2D rigid;
+	SpriteRenderer spriterenderer;
+	Animator anim;
+	
+	void Awake(){
+
+
+		rigid=GetComponent<Rigidbody2D>();
+		spriterenderer=GetComponent<SpriteRendered>();
+		anim=GetComponent<Animator>();
+
+	}
+
+	void update(){
+		//단발적인 키 입력은 update에 있는 게 낫다.
+
+		if(Input.GetButtonUp("Horizontal")){
+			//뗐을 때 속도를 확 줄여 멈추게 하기 위한 것
+			rigid.velocity=new Vector2(rigid.velocity.normalized.x*0.5f,rigid.velocity.y);
+			//0.5앞의 것들은 방향 입력을 위한 것
+
+		}
+
+		//방향 전환을 위한 것
+
+		if(Input.GetButtonUp("Horizontal")){
+		spriteRendere.flipX= Input.GetAxisRaw("Horizontal")==-1;
+		
+		//Input.GetAxisRaw("Horizontal")==-1 요것이 참이면 참이 반환 되어
+		//spriteRendere.flipX에 참이 들어가서 뒤집힌다.
+
+
+		}
+
+
+		//언제 걷는 애니메이션 할래?
+
+		if(Mathf.Abs(rigid.velocity.x) < 0.3)
+			anim.SetBool("IsWalking",false);
+		else
+			anim.SetBool("IsWalking",true);
+
+		//여기서 iswalking은 애니메이션의 이름이다.(내가 정함)
+		//mathf 함수는 수학관련 함수사용(절댓값 사용을 위해)
+	}
+
+	void Fixedupdate(){
+
+		float h = Input.GetAxisRaw("Horizontal");
+
+		rigid.AddForce(Vector2.right*h,ForceMode2D.Impulse);
+
+		//이렇게 되면 계에에에에ㅔ엥속 가속도를 받아서 너무나 빨라짐
+		//max를 걸 필요가 있다.
+
+		if(rigid.velocity.x>maxSpeed){    //오른쪽 맥스
+			rigid.velocity=new Vector2(maxSpeed,rigid.velocity.y);
+
+		else if (rigid.velocity.x <maxSpeed*(-1)){    //왼쪽 맥스
+			rigid.velocity = new Vector2(maxSpeed*(-1),rigid.velocity.y);
+
+
+	}
+
+}
+
+
+2d 재질을 선택 할 수 있다. (탄성력과 마찰력)
+
+Linear Drag는 공기 저항, 이동 시 속도를 느리게 해준다.
+
+normalized는 벡터를 단위 벡터로 만든 상태
+
+
+player의 sprite rendere의 flip -> 반대로 돌릴 수 있음 (왼쪽 오른쪽)
