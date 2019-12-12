@@ -33,7 +33,13 @@ public class Move : MonoBehaviour{
     if(Input.GetButtonDown("Jump")&& !anim.GetBool("isJumping")){ //2단 점프 구현 할래??
       rigid.Addforce(Vector2.up*jumpPower,ForeMode2D.Impulse);
       anim.SetBool("isJumping",true);
-      
+    }
+    
+    //스킬 관련(미완성)
+    
+    if(Input.GetKey(Keycode.Q)){
+    
+    
     }
     
   }  
@@ -72,6 +78,8 @@ public class Move : MonoBehaviour{
       //배틀 페이지로 들어가는 함수
      }
    }
+   
+   //스킬 사용 관련
    
    
 }
