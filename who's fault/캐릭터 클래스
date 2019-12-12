@@ -30,13 +30,18 @@ public class Move : MonoBehaviour{
       anim.SetBool("isWalking",true);
     }
     //점프 뛰기
-    if(Input.GetButtonDown("Jump")&& !anim.GetBool("isJumping")){
-    
+    if(Input.GetButtonDown("Jump")&& !anim.GetBool("isJumping")){ //2단 점프 구현 할래??
+      rigid.Addforce(Vector2.up*jumpPower,ForeMode2D.Impulse);
+      anim.SetBool("isJumping",true);
+      
     }
     
   }  
     
     void Fixedupdate(){
+      
+      //이동 관련
+    
       float h=Input.GetAxisRaw("Horizontal");
       rigid.AddForce(Vector2.right*h,ForcedMode2D.Impulse);
       
@@ -44,6 +49,30 @@ public class Move : MonoBehaviour{
         rigid.velocity=new Vector2(maxSpeed,rigid.velocity.y);
       else if(rigid.velocity.x<maxSpeed*(-1))
         rigid.velocity=new Vector2(maxSpeed*(-1),rigid.velocity.y);
-    }
+      }
+    
+    
+    //점프 관련
+    
+     if(rigid.velocity.y<0){//->내려올때만 빔쏘기
+    
+        //빔을 쏘면 당사자의 collider를 맞고 사라진다.
+      
+        RaycastHit2D rayHit = Phsics2D.Raycast(rigid.position, Vector2.down, 1, LayMask.GetMask("Platform"));
+       if(rayHit.collider != null){
+         if(rayHit.distance<0.5f){
+            anim.SetBool("isJumping",false);
+         }
+       }
+     }
+   }
+   
+   void OnCollisionEnter2D(Collision2D collision){
+     if(collision.gameObject.tag=="Enemy"){
+      //배틀 페이지로 들어가는 함수
+     }
+   }
+   
+   
 }
   
