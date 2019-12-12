@@ -1,0 +1,83 @@
+플레이어 점프
+
+
+public  class Move:MonoBehaviou{
+	
+	//이것도 시험 해보면서 바꾸라고 public
+
+	public float jumpPower;	
+	anim=GetComponent<Animator>();
+	
+
+	void update(){
+
+	//점프 뛰기
+	if(Input.GetButtonDown("Jump") && !anim.GetBool("isJumping")){
+
+		//!를 붙이는것이 not
+
+		rigid.AddForce(Vector2.up*jumpPower,ForcMode2D.Impulse);
+		anim.SetBool("isJumping",true);
+		
+
+	}
+	
+
+	
+	void FixedUpdate(){	
+		
+		
+		
+
+
+			
+
+	
+		
+
+		if(rigid.velocity.y<0){	
+			//ray를 보여줘!(실제 게임에서는 안보인다. Debug는)
+
+			Debug.DrawRay(rigid.position, Vector3.down, Color(0,1,0));
+
+			//ray를 닿은 것을 보자
+			//빔을 쏘면 당사자의 collider를 맞고 사라진다.	
+
+			Raycasthit2D rayHit = Phsics2D.Raycast(rigid.position, Vector3.down, 1, LayMask.GetMask("Platform"));	
+			
+			if(rayHit.collider != null){
+				if(rayHit.distance<0.5f){	//플레이어의 중앙에서 시작하기 때문에
+					anim.SetBool("isJumping",false);
+				}
+			}		
+		}
+
+		
+
+		
+	}	
+
+
+
+	}
+
+}
+
+
+Project setting> Physics 2D에서 중력 값 설정 가능
+
+Gravity Scale은 오브젝트에 적용되는 중력 비율
+
+RayCast : 오브젝트 검색을 위해 ray를 쏘는 방식
+	(빔 시작 위치, 쏘는 방향, 거리, 레이어값)
+
+
+
+DrawRay() : 에디터 상에서만 Ray를 그려주는 함수
+
+	(빔 시작 위치, 쏘는 방향, 색깔)
+
+RayCastHit : Ray에 닿은 오브젝트
+
+
+LayerMask : 물리 효과를 구분하는 정수 값 (다른 layer 끼리는 부딪히지 않게)
