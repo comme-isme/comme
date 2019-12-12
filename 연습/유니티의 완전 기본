@@ -1,0 +1,89 @@
+유니티의 시작
+
+
+프로젝트-새로 생성- 2d- 생성
+
+
+
+
+main camera -2d object- sprite 
+
+
+
+camera-size로 줌 조정 가능
+
+
+2d는 기본적으로 원근법을 보지 않는 카메라 
+
+겹칠 때 보이게하는 법 
+: z축 사용, or order in layer을 작은 숫자로 하면 앞으로 간다
+
+
+layer의 이름 정하기
+
+
+
+물리 적용
+드래그로 sprite 옮기기
+
+
+
+
+그래픽이 번져 보이는 것
+
+filter mode : point를 써서 깔끔하게 사용(픽셀 아트는 무조건)
+
+compression : none으로
+
+
+pixel per unit 16 하면 딱 한칸
+
+다 0,0 설정 후 x,y크기로 위치 설정
+
+
+
+
+add component : 2d collider(충돌  설정)
+		2d rigidbody(물리 효과)
+
+
+충돌여백 :0 (0.00001)
+
+
+
+
+
+
+
+
+sprite mode : multiple
+		sprite editor
+		
+		slice : automatic
+
+			or
+
+
+			cell by size 
+
+
+			apply
+
+그러면 다 잘린다. (하나하나 있는 것 보다는 훨씬 낫다.)
+
+
+
+
+애니메이션- 4개 드래그해서 sprite에 집어 넣는다.
+
+
+
+
+
+
+애니메이터의 entry에 기본을 넣는다. (set a layor default)
+
+key frame에 가서 느리게 한다.
+
+애니메이터 idle에서 speed를 느리게 해도 된다.
+
