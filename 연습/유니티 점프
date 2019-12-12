@@ -25,16 +25,6 @@ public  class Move:MonoBehaviou{
 
 	
 	void FixedUpdate(){	
-		
-		
-		
-
-
-			
-
-	
-		
-
 		if(rigid.velocity.y<0){	
 			//ray를 보여줘!(실제 게임에서는 안보인다. Debug는)
 
