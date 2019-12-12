@@ -1,0 +1,21 @@
+public class Skill : MonoBehaviour{
+
+  //생긴거
+  public GameObject shape;
+  public transform pos;
+  public float cooltime;
+  private float curtime;
+  
+  void start(){
+  
+  }
+  
+  
+  void Update(){
+    if(curtime<=0){
+      if(Input.GetKey(KeyCode.Q)){
+        //스킬 발현
+      }
+    }
+  }
+}
