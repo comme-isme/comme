@@ -25,7 +25,7 @@ public  class Move:MonoBehaviou{
 
 	
 	void FixedUpdate(){	
-		if(rigid.velocity.y<0){	
+		if(rigid.velocity.y<0){	 ->내려올때만 빔쏘기
 			//ray를 보여줘!(실제 게임에서는 안보인다. Debug는)
 
 			Debug.DrawRay(rigid.position, Vector3.down, Color(0,1,0));
