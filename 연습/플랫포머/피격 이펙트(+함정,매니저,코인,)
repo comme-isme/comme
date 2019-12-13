@@ -42,7 +42,7 @@ void OnCollisionEnter2D(Collision2D collision)
   }
   else if(collision.gameobject.tag=="finish"){
     //다음 단계로(game manager)
-      
+    gameManager.nextStage();
   }
  
  
