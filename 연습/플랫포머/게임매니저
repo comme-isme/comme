@@ -1,4 +1,6 @@
 create empty-> 이름 game manager -> script 추가(game manager)
+스테이지도 비슷하게 한다.(1~2~3~스테이지)
+
 
 
 using System.Collections;
@@ -12,10 +14,15 @@ public class GameManager:MonoBehaviour{
   public int stageIndex;
   public int health;
   public PlayerMove player;  ->인스펙터창에 끌어다 놓기
+  public GameObjectp[] Stages;
   
   public void nextStage(){
   
+    //스테이지 변경
+    Stages[stageIndex].SetActive(false);
     stageIndex++;
+    Stages[stageIndex].SetActive(true);
+    
     totalPoint +=stagePoint;
     stagePoint=0;
   }
@@ -23,16 +30,18 @@ public class GameManager:MonoBehaviour{
   //얘를 낭떨어지 밑으로 collider 설정
   void OnTriggerEnter2D(Collider2D collision){
     if(collision.gameObject.tag=="Player")
-      health--;
-      
+     
       //플레이어 원위치
-      collision.attachedRigidbody.velocity =Vector2.zero;
-      collision.transform.position =new Vector3(0,0,-1);
+      if(health>1){
+        collision.attachedRigidbody.velocity =Vector2.zero;
+        collision.transform.position =new Vector3(0,0,-1);
+      }
+       HelathDown();
     }
   }
   
   public void HealthDown(){
-    if(health>0)
+    if(health>1)
       health--;
     else
       player.OnDie();
@@ -45,5 +54,8 @@ public class GameManager:MonoBehaviour{
     rigid.AddForce(Vector2.up*5,ForceMode2D.Impulse);
   }
  
- 
+ void PlayerReposition(){
+  player.transform.position=new Vector3(0,0,-1);
+  player.VelocityZero();
+ }
 }
