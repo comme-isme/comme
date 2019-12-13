@@ -8,16 +8,18 @@ playerdamaged 레이어 상태에서는 적과 닿지 않기(무적 상태 주�
 //플레이어 클래스의 함수
 void OnCollisionEnter2D(Collision2D collision)
 {
-  if(collision.gameObject.tag=="Enemy"){ //적을 맞았을 때
+  if(collision.gameObject.tag=="Enemy"){ 
+  
+    //적 위에 있고 낙하 속도가 있을 때 적을 죽인다.
     if(rigid.velocity.y<0 && transform.position.y>collison.transform.position){
-      Attack;
+      OnAttack(collsion.transform);
     }
-    else
+    else    //적을 맞았을 때
       OnDamaged(collision.transform.position);
   }
  }
  
- 
+ //적에게 데미지
  void OnAttakc(Transform enemy){
   EnemyMove enemyMove= enemy.GetComponent<EnemyMove>();
   enemyMove.onDamaged();
