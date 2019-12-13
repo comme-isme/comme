@@ -16,13 +16,35 @@ public class GameManager:MonoBehaviour{
   public PlayerMove player;  ->인스펙터창에 끌어다 놓기
   public GameObjectp[] Stages;
   
-  public void nextStage(){
+  public Image[] UIhealth;
+  public Text UIpoint;
+  public Text UIStage;  //=>다 갖다 박아 넣기
+  public GameObject UIResetBtn;
+  
+  
+  void Update(){
+    UIPoint.text=(totlaPoint + StagePoint).ToString(); ->숫자를 문자로 바꾸기
+  }
+  
+  
+  
+  public void NextStage(){
   
     //스테이지 변경
-    Stages[stageIndex].SetActive(false);
-    stageIndex++;
-    Stages[stageIndex].SetActive(true);
-    
+    if(StageIndex<Stage.Length-1){
+     Stages[stageIndex].SetActive(false);
+     stageIndex++;
+     Stages[stageIndex].SetActive(true);
+     PlayerReposition();
+     
+     UIStage.text"STAGE"+(StageIndex+1);
+     Text btnText = UIRestartBtn.GetComponentInChildren<Text>(); //->자식 오브젝트까지 찾기
+    }
+    else {
+      Time.timeScale=0; //->시간을 멈춘다.
+      Debug.log("게임 클리어!");
+      UIRestartBtn.SetActive(true);
+    }
     totalPoint +=stagePoint;
     stagePoint=0;
   }
@@ -32,20 +54,25 @@ public class GameManager:MonoBehaviour{
     if(collision.gameObject.tag=="Player")
      
       //플레이어 원위치
-      if(health>1){
-        collision.attachedRigidbody.velocity =Vector2.zero;
-        collision.transform.position =new Vector3(0,0,-1);
-      }
-       HelathDown();
+      if(health>1)
+        PlayerReposition()
+        
+      HelathDown();
     }
   }
   
   public void HealthDown(){
-    if(health>1)
+    if(health>1){
       health--;
+      UIhealth[health].color = new Color(1,0,0,0.4f);
+    }
     else
+      UIhealth[0].color = new Color(1,0,0,0.4f);
       player.OnDie();
-    
+      
+      //retry 버튼
+      UIRestartBtn.SetActive(true);
+  }  
   
   public void OnDie(){
     spriteRenderer.color=new Color(1,1,1,0.4f);
@@ -57,5 +84,10 @@ public class GameManager:MonoBehaviour{
  void PlayerReposition(){
   player.transform.position=new Vector3(0,0,-1);
   player.VelocityZero();
+ }
+ 
+ public void Restart(){
+  Time.timeScale=1; //->시간 복구 시키기
+  SceneManager.LoadScene(0)  //-> 뭐지 이건... 재시작하기..
  }
 }
