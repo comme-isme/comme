@@ -91,6 +91,9 @@ void OnCollisionEnter2D(Collision2D collision)
   
  }
  
+ public void VelocityZero(){
+  rigid.velocity=Vector2.zero;
+ }
  
  
  
