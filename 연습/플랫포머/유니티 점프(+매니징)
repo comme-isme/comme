@@ -4,9 +4,11 @@
 public  class Move:MonoBehaviou{
 	
 	//이것도 시험 해보면서 바꾸라고 public
-
+	
+	public GameManager gameManager;  ->인스펙터 창으로 옮기기
 	public float jumpPower;	
 	anim=GetComponent<Animator>();
+	
 	
 
 	void update(){
