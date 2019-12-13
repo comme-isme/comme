@@ -19,6 +19,21 @@ void OnCollisionEnter2D(Collision2D collision)
   }
  }
  
+ 
+ void OnTriggerEnter2D(Collider2D collision){
+  if(collision.gameobject.tag=="Item"){
+    //점수
+    
+    //아이템 사라지기
+    collision.gameobject.SetActive(false);
+  }
+  else if(collision.gameobject.tag=="finish"){
+    //다음 단계로(game manager)
+      
+  }
+ 
+ 
+ }
  //적에게 데미지
  void OnAttakc(Transform enemy){
   
