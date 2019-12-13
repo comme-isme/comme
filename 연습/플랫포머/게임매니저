@@ -1,0 +1,11 @@
+create empty-> 이름 game manager -> script 추가(game manager)
+
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class GameManager:MonoBehaviour{
+  //점수와 스테이지 관리
+  public int total point;
+  public int 
