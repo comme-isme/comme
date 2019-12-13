@@ -10,12 +10,15 @@ public class EnemyMove : MonoBehaviour
   public int nextMove;
   Animator anim;
   SpriteRenderer spriterenderer;
+  //콜라이더 만들어주기
+  CapsuleCollider2D collider;
   
   void Awake()
   { 
     rigid = GetComponent<Rigidbody2D>();
     anim=GetComponent<Animator>();
     spriterenderer=GetComponent<Animator>();
+    collider=GetComponent<CapsuleCollider2D>();
     Invoke("Think",5);
   }
   
@@ -67,6 +70,20 @@ public class EnemyMove : MonoBehaviour
   
   }
   
+  //다른 클래스에서 호출하기 때문에 public
+  //몬스터가 죽는 함수
+  public void OnDamaged(){
+    spriteRenderer.color=new Color(1,1,1,0.4f);
+    spriteRenderer.flipY=true;
+    collider.enabled=false;
+    rigid.AddForce(Vector2.up*5, ForceMode2D.Impulse);
+    Invoke("DeActive",5);
+  
+  }
+  //몬스터 
+  void DeActive(){
+    gameObject.SetActive(false); 
+  }
 }
 
 
