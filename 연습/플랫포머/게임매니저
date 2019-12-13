@@ -91,3 +91,28 @@ public class GameManager:MonoBehaviour{
   SceneManager.LoadScene(0)  //-> 뭐지 이건... 재시작하기..
  }
 }
+
+
+PlayerMove 클래스에
+
+  public AudioClip audioJump;
+  .
+  .
+  .
+  .
+  AudioSoure audioSouce;
+  다 넣음
+  
+  awake
+   audioSource=GetComponent<AudioSource>()
+  
+  
+  점프 시
+    audiSource.clip = audioJump;
+    audioSource.Play();
+    
+  혹은 함수 하나로 만들던지.
+  그리고 변수를 인스펙터창에 옮겨 넣어라
+  
+  
+  
