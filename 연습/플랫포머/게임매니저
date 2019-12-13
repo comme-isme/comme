@@ -7,5 +7,15 @@ using UnityEngine;
 
 public class GameManager:MonoBehaviour{
   //점수와 스테이지 관리
-  public int total point;
-  public int 
+  public int totalPoint;
+  public int stagePoint;
+  public int stageIndex;
+  
+  public void nextStage(){
+  
+    stageIndex++;
+    totalPoint +=stagePoint;
+    stagePoint=0;
+  }
+  
+}
