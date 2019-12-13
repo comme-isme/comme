@@ -21,6 +21,10 @@ void OnCollisionEnter2D(Collision2D collision)
  
  //적에게 데미지
  void OnAttakc(Transform enemy){
+  
+  //반발력(몬스터 밟았을 때)
+  rigid.AddForce(Vector2.up*5,ForceMode2D.Impulse);
+ 
   EnemyMove enemyMove= enemy.GetComponent<EnemyMove>();
   enemyMove.onDamaged();
  }
