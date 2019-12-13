@@ -58,8 +58,13 @@ void OnCollisionEnter2D(Collision2D collision)
   gameManager.stagePoint += 10;
  }
  
+ //내가 데미지
  void OnDamaged(Vector2 targetPos)
  { 
+ 
+    //체력 깎이기
+    gameManger.health--;
+ 
     gameObject.layer=11;
     //playerdamaged 레이어
     
