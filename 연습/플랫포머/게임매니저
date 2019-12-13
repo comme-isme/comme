@@ -11,7 +11,7 @@ public class GameManager:MonoBehaviour{
   public int stagePoint;
   public int stageIndex;
   public int health;
-  
+  public PlayerMove player;  ->인스펙터창에 끌어다 놓기
   
   public void nextStage(){
   
@@ -24,4 +24,26 @@ public class GameManager:MonoBehaviour{
   void OnTriggerEnter2D(Collider2D collision){
     if(collision.gameObject.tag=="Player")
       health--;
+      
+      //플레이어 원위치
+      collision.attachedRigidbody.velocity =Vector2.zero;
+      collision.transform.position =new Vector3(0,0,-1);
     }
+  }
+  
+  public void HealthDown(){
+    if(health>0)
+      health--;
+    else
+      player.OnDie();
+    
+  
+  public void OnDie(){
+    spriteRenderer.color=new Color(1,1,1,0.4f);
+    spriteRenderer.flipY=true;
+    capsuleCollider.enabled=false;
+    rigid.AddForce(Vector2.up*5,ForceMode2D.Impulse);
+  }
+ 
+ 
+}
