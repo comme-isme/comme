@@ -10,6 +10,8 @@ public class GameManager:MonoBehaviour{
   public int totalPoint;
   public int stagePoint;
   public int stageIndex;
+  public int health;
+  
   
   public void nextStage(){
   
@@ -18,4 +20,8 @@ public class GameManager:MonoBehaviour{
     stagePoint=0;
   }
   
-}
+  //얘를 낭떨어지 밑으로 collider 설정
+  void OnTriggerEnter2D(Collider2D collision){
+    if(collision.gameObject.tag=="Player")
+      health--;
+    }
