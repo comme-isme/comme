@@ -1,0 +1,8 @@
+using UnityEngine.Ui;
+
+public class Bishop : BasePiece{
+
+
+
+
+}
