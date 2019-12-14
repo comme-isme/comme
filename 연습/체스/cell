@@ -1,0 +1,25 @@
+보드와 게임 매니저와 셀, 이렇게 3개의 스크립트를 만들 것
+
+
+cell script
+
+using UnityEngine.UI;
+
+public class Cell : Monobehaviour{
+
+  public Image mOutlineImage;
+  
+  [HideInInspector]
+  public Vector2Int mBoardPosition = Vector2Int.zero;
+  [HideInInspector]
+  public Board mBoard=null;
+  [HideInInspector]
+  public RectTransform mRectTransform=null;
+  
+  public void SetUp(VectorInt newBoardPosition, Board newBoard){
+    mBoardPosition=newBoardPosition;
+    mBoard = newBoard;
+    
+    mRectTransform=GetComponent<RectTransform>();
+    
+  }
