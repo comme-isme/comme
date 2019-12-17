@@ -1,0 +1,53 @@
+role tile -> 규칙을 정할 수 있는 타일  unity 제공 X
+google 에서 2d extra > github 클릭
+4releases unity 버전 zip 다운로드
+assets 드래그 해서 폴더에 넣기
+asset에서 우클릭 -> create file -> rule tile
+sprite 설정 - > + 버튼으로 타일 추가 
+타일로 옮기기
+rule은 상하 좌우 다 있을 때는 중간
+좌상 없을 때는 왼쪽 모서리  이런 식으로 규칙을 설정하면 자동으로 계속 변함
+
+
+애니메이션 타일
+
+output 을 animation으로 설정
+size하고 animation 넣기
+
+
+외부 경계
+
+borderline-> collider 추가 
+mask interaction으로 안보이게 설정
+
+
+픽셀 깨지는 거 잡아주기 -> 픽셀퍼펙트
+
+window -> PackageManager
+show preiveiw package
+2d Pixel Perfect install
+Maincamera Add component
+
+
+
+
+public class Player:MonoBehaviour{
+  public float Speed;
+  float h;
+  float v;
+  
+  Rigidbody2D rigid;
+  
+  void Awake(){
+    rigid=GetComponent<Rigidbody2D>();
+  }
+  
+  void Update(){
+    h=Input.GetAxisRaw("Horizontal");
+    v=Input.GetAxisRaw("Vertical");
+  }
+  
+  void FixedUpdate(){
+    rigid.velocity=new Vector2(h,v)*Speed;
+  }
+}
