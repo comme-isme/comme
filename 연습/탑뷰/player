@@ -35,19 +35,75 @@ public class Player:MonoBehaviour{
   public float Speed;
   float h;
   float v;
+  bool isHorizonMove;
+  Vector3 dirVec;
+  GameObject = ScanObject;
   
+  Animator anim;
   Rigidbody2D rigid;
   
   void Awake(){
     rigid=GetComponent<Rigidbody2D>();
+    anim=GetComponent<Animator>();
   }
   
   void Update(){
     h=Input.GetAxisRaw("Horizontal");
     v=Input.GetAxisRaw("Vertical");
+    
+    bool hDown=Input.GetButtonDown("Horizontal");
+    bool vDown=Input.GetButtonDown("Vertical");
+    bool hUp=Input.GetButtonUp("Horizontal");
+    bool vUp=Input.GetButtonUp("Vertical");
+    
+    //Check horizon
+    if(hDown || vUp)
+      isHorizonMove=true;
+    else if(vDown)
+      isHorzionMove=false;
+    else if(vDown || hUp)
+      isHorizonMove= h !=0;
+      
+    //애니메이션 실행
+    if(anim.GetInteger("hAxisRaw")!=h){
+      anim.SetBool("isChange",true);
+      anim.SetInteger("hAxisRaw",(int)h);
+    }
+    else if(anim.GetInteger("vAxisRaw)!=v){
+      anim.SetBool("isChange",true);
+      anim.SetInteger("vAxisRaw",(int)v);
+    }
+    else
+      anim.SetBool("isChange",false);
+      
+    if(vDown && v==1)
+      dirVec=Vector3.up;
+    else if(vDown && v==-1)
+      dirVec=Vector3.down;
+    else if(vDown && h==-1)
+      dirVec=Vector3.left;
+    else if(vDown && h==-1)
+      dirVec=Vector3.right;
+      
+    //Scan object
+    if(Input.GetButtonDown("Jump"))&& ScanObject!=null)
+      Debug.Log(ScanObject.name);
+    
   }
   
   void FixedUpdate(){
-    rigid.velocity=new Vector2(h,v)*Speed;
+    //move
+    Vector2 moveVec =isHorizonMove ? new Vector2(h,0) : new Vector2(0,v);
+    rigid.velocity=new moveVec*Speed;
+    
+    //ray
+    Debug.DrawRay(rigid.position, dirVec*0.7f, new Color(0,1,0));
+    RaycastHit2D ratHit = Physics2D.Raycast(rigid.position, dirVec, 0.7f, LayerMask.GetMask("object"));
+    
+    if(rayGit.collider !=null){
+      ScanObject=rayHit.collider.gameObject;
+    }
+    else
+      ScanObject=null;
   }
 }
