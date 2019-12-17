@@ -38,6 +38,7 @@ public class Player:MonoBehaviour{
   bool isHorizonMove;
   Vector3 dirVec;
   GameObject = ScanObject;
+  public GameManger manager;
   
   Animator anim;
   Rigidbody2D rigid;
@@ -48,13 +49,15 @@ public class Player:MonoBehaviour{
   }
   
   void Update(){
-    h=Input.GetAxisRaw("Horizontal");
-    v=Input.GetAxisRaw("Vertical");
-    
-    bool hDown=Input.GetButtonDown("Horizontal");
-    bool vDown=Input.GetButtonDown("Vertical");
-    bool hUp=Input.GetButtonUp("Horizontal");
-    bool vUp=Input.GetButtonUp("Vertical");
+    //UI가 있을 때는 움직이지 마!
+    h=manager.isAction ? 0 : Input.GetAxisRaw("Horizontal");
+    v=manager.isAction ? 0 : Input.GetAxisRaw("Vertical");
+     
+    //UI있을 때는 움직이지 마!
+    bool hDown = manger.Action ? false : Input.GetButtonDown("Horizontal");
+    bool vDown = manger.Action ? false : Input.GetButtonDown("Vertical");
+    bool hup = manger.Action ? false : Input.GetButtonDown("Horizontal");
+    bool vUp = manger.Action ? false : Input.GetButtonDown("Vertical");
     
     //Check horizon
     if(hDown || vUp)
@@ -87,8 +90,7 @@ public class Player:MonoBehaviour{
       
     //Scan object
     if(Input.GetButtonDown("Jump"))&& ScanObject!=null)
-      Debug.Log(ScanObject.name);
-    
+      manager.Action(ScanObject);
   }
   
   void FixedUpdate(){
@@ -107,3 +109,10 @@ public class Player:MonoBehaviour{
       ScanObject=null;
   }
 }
+
+
+
+
+게임 매니저 인스펙터 창에 talk text 변수 채워주기
+플레이어에도 게임매니저 넣어주기
+
