@@ -2,3 +2,5 @@ public class ObjectData : MonoBehaviour{
   public int id;
   public bool isNPC;
 }
+
+모든 오브젝트의 인스펙터 창에 스크립트를 집어넣고, id  isNPC 여부등을 선택한다.
