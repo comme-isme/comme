@@ -5,3 +5,10 @@ text id = 사람 : 사랑
 text.Split(":")[1] = 사랑
             ||
            구분자
+
+
+parse()-> 파싱
+
+int.Parse(text);
+
+text 문자열을 int 형으로 바꾼다.
