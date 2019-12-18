@@ -25,17 +25,11 @@ public class GameManger : MonoBehaviour
   public int talkIndex;
   
   public void Action(GameObject scanObj){
+    scanObject=scanObj;
+    Object objData= scanObject.GetComponent<ObjData>();
+    Talk(objData.id, objData.isNpc);
     
-    if(isAction){ //exit Action
-      isAction=false;
-    }
-    else{ //Enter action
-      isAction=true;
-      scanObject=scanObj;
-      Object objData= scanObject.GetComponent<ObjData>();
-      Talk(objData.id, objData.isNpc);
-    }
-     talkPanel.setActive(isAction);
+    talkPanel.setActive(isAction);
   } 
   void Talk(int id, bool isNpc){
     string talkData = talkManager.GetTalk(id, talkIndex);
@@ -45,6 +39,8 @@ public class GameManger : MonoBehaviour
     else{
       talkText.text=talkData;
     }
+    
+    isAction = true;
   }
 }
 
