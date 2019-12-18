@@ -1,0 +1,20 @@
+public class TalkManager : MonoBehaviour{
+  Dictionary<int, string[]> talkData;
+  
+  void Awake(){
+    talkData =new Dictionary<int, stringp[]>();
+    GenerateData();
+  }
+  
+  void GenerateData(){
+    //dictionary에 데이터 추가
+    talkData.Add(1000, new string[]{ "안녕?", "이 곳에 처음이구나?"});
+    talkData.Add(100, new string[]{ "평범한 나무상자다."});
+    talkData.Add(200, new string[]{ "누군가 사용한 흔적이 있다."});
+  }
+  
+  public string GetTalk(int id, int talkIndex){
+    //처음[]는 dictionary 두번째는 배열
+    return talkData[id][talkIndex];
+  }
+}
