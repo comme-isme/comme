@@ -33,14 +33,22 @@ public class GameManger : MonoBehaviour
   } 
   void Talk(int id, bool isNpc){
     string talkData = talkManager.GetTalk(id, talkIndex);
+    
+    if(talkData==null){
+      isAction =false;
+      
+      //void에서 return은 함수 강제 종료 (뒤쪽 if문들 실행 되지 않음)
+      return;
+    }
+
     if(isNpc){
       talkText.text=talkData;
     }
     else{
       talkText.text=talkData;
     }
-    
     isAction = true;
+    talkIndex++;
   }
 }
 
