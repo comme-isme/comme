@@ -15,6 +15,9 @@ public class TalkManager : MonoBehaviour{
   
   public string GetTalk(int id, int talkIndex){
     //처음[]는 dictionary 두번째는 배열
-    return talkData[id][talkIndex];
+    if(talkIndex == talkData[id].Legth)
+      return null;
+    else
+      return talkData[id][talkIndex];
   }
 }
