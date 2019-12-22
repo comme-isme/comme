@@ -7,10 +7,10 @@
 .//마저 작성
 .
 android:id="@+id/mainlayout"
-android:orientation="vertical">
+android:orientation="vertical">	//버튼과 Mydraw(그리는 부분)을 수직으로 배치
 
 
-	<//Mydraw의 주소
+	<//Mydraw의 주소 		//ex)com.bliss.csc.mathgraphic.Mydraw
 		android:layout_width="fill_parent"
 		android:layout_height="fill_parent" />
 
