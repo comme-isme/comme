@@ -1,7 +1,8 @@
 //import 할 거 하기
 
 
-<LinearLayout 
+<LinearLayout  //->android.support.constraint.Constraint를 지우고 써넣는다.
+		//텍스트 뷰 삭제
 .
 .//마저 작성
 .
