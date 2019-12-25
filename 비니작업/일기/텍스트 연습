@@ -1,0 +1,39 @@
+xml을 그냥 디자인으로 바로바로 가능하다.
+오른쪽 툴에서 id 변경 가능(xml 기능 거의 수행 가능 해 보임)
+
+
+
+
+
+public class MainActivity extends AppCompatActivity{
+
+  private TextView mTextView;
+  private EditText mEditText;
+  private Button mButton;
+
+  protected void onCreate(Bundle savedInstanceState){
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+    
+    mTextView=(TextView)findViewById(R.id.textView);
+    mEditText=(EditText)findViewById(R.id.editText);
+    mButton=(Button)findViewById(R.id.button);
+    
+    View.OnClickListener firstOnClickListener=new OnClickListener(){
+    
+      public void onClick(View v){
+        //별 것없는 버튼 리스너다.
+        String text=mEditText.getText().toString(); //getText()로 불러지는 값은 editable이기 때문에 toString이 필요
+        mTextView.setText(text);
+        mEditText.setText("");
+      }
+    };
+    
+    mButton.setOnClickListener(firstOnClickListener);
+  }
+  
+  
+  
+}
+    
+
