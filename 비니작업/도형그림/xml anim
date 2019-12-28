@@ -2,6 +2,8 @@ res 우클릭-> new -> directory  name: anim
 anim 우클릭-> new-> Animation resource file 
 name : fab_open
 
+<set~~~~~ android : fillAfter="true">   //->넣어주기 필수 전부 다!!
+
 <scale
   android : fromXScale= "0.0"
   android : fromYScale="0.0"
