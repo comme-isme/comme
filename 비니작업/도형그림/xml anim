@@ -1,0 +1,81 @@
+res 우클릭-> new -> directory  name: anim
+anim 우클릭-> new-> Animation resource file 
+name : fab_open
+
+<scale
+  android : fromXScale= "0.0"
+  android : fromYScale="0.0"
+  android : toXScale="0.8"
+  android : toYScale="0.8"
+  android : pivotX="50%"
+  android : pivotY="50%"
+  android : duration = "300"
+  
+  android : interpolator="@android:anim/linear_interpolator"/>
+  
+  <alpha
+    android : fromAlpha="0.0"
+    android : toAlpha="1.0"
+    android : duration="300"
+    android : interpolator="@android:anim/accelerate_interpolator"/>
+</set>
+
+
+
+
+
+fab_close
+
+<scale
+  android : fromXScale= "0.8"
+  android : fromYScale="0.8"
+  android : toXScale="0.0"
+  android : toYScale="0.0"
+  android : pivotX="50%"
+  android : pivotY="50%"
+  android : duration = "300"
+  
+  android : interpolator="@android:anim/linear_interpolator"/>
+  
+  <alpha
+    android : fromAlpha="1.0"
+    android : toAlpha="0.0"
+    android : duration="300"
+    android : interpolator="@android:anim/accelerate_interpolator"/>
+</set>
+
+
+
+
+
+rotate_forward
+
+<rotate
+  android : fromDegrees="0"
+  android : toDegrees="45"
+  android : pivotX="50%"
+  android : pivotY="50%"
+  android : duration="300"
+  android : interpolator="@android:anim/linear_interpolator"/>
+</set>
+  
+
+
+
+
+rotate_backward
+
+<rotate
+  android : fromDegrees="45"
+  android : toDegrees="0"
+  android : pivotX="50%"
+  android : pivotY="50%"
+  android : duration="300"
+  android : interpolator="@android:anim/linear_interpolator"/>
+</set>
+  
+
+
+
+
+
