@@ -4,6 +4,12 @@ Public class MaintActivity extends AppCompatActivity{
 
 	private LinearLayout back;
 	Paint BackgroundColor=new Paint();
+	private Button Btn6;
+	private Button Btn1;
+	private Button Btn2;
+	private Button Btn3;
+	private Button Btn4;
+	private Button Btn5;
 	
 	
 
@@ -11,25 +17,53 @@ Public class MaintActivity extends AppCompatActivity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		
+		Btn1=(Button)findViewById(R.id.WhiteBtn);
+		Btn2=(Button)findViewById(R.id.BlackBtn);
+		Btn3=(Button)findViewById(R.id.RndPaintBtn);
+		Btn4=(Button)findViewById(R.id.RndBackBtn);
+		Btn5=(Button)findViewById(R.id.ResetBtn);
+		Btn6=(Button)findViewById(R.id.PaletteBtn);
+		
 		back=(LinearLayout)findViewById(R.id.mainlayout);
+		
 		BackgroundColor.setColor(Color.white);
 	}
 	
-	public void PaintColorChange(View v){
-		Random random = new Random();
-		MyDraw.paintColor=Color.rgb(random.nextInt(255),random.nextInt(255),random.nextInt(255));
-	}
 	
-	public void BackgroundColorChange(View v){
-		Random random = new Random();
-		BackgroundColor=Color.rgb(random.nextInt(255),random.nextInt(255),random.nextInt(255));
-		back.setBackgroundResource(BackgroundColor);
-	}
+	Btn1.setOnClickListener(new View.OnClickListener(){
+		public void onClick(View v){
+			Mydraw.paintcolor.setColor(color.white);
+		}
+	});
 	
-	public void Clear(View v){
-		BackgroundColor.setColor(color.white);
-		back.setBackgroundResource(BackgroundColor);
-	}
+	Btn2.setOnClickListener(new View.OnClickListener(){
+		public void onClick(View v){
+			Mydraw.paintcolor.setColor(color.black);
+		}
+	});
+	
+	Btn3.setOnClickListener(new View.OnClickListener(){
+		public void onClick(View v){
+			Random rnd = new Random();
+			MyDraw.paintColor=Color.rgb(rnd.nextInt(255),rnd.nextInt(255),rnd.nextInt(255));
+		}
+	});
+	
+	Btn4.setOnClickListener(new View.OnClickListener(){
+		public void onClick(View v){
+			Random rnd = new Random();
+			BackgroundColor=Color.rgb(rnd.nextInt(255),rnd.nextInt(255),rnd.nextInt(255));
+			back.setBackgroundColor(BackgroundColor);
+		}
+	});
+	
+	
+	Btn5.setOnClickListener(new View.OnClickListener(){
+		public void onClick(View v){
+			MyDraw.Invalidate();
+		}
+	});
 	
 }
 
