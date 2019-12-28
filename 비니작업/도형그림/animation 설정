@@ -1,0 +1,68 @@
+app 우클릭 -> new -> Vector Asset (Image Asset 하던지)
+icon 클릭해서 그림 지정
+얘네는 drawable에 들어간다.
+
+원래 있던 거 더블클릭 해서 소스 들어가서
+app:src~~~@drawable~~~되있는 거를
+android:src="@drawable/ 내꺼 id"    로 바꾼다.
+
+
+그리고 원래 안 보일 거는
+
+android:visibility="invisible" 설정
+
+
+그리고 mainActivity
+
+
+public class MainActivity extends AppCompatActivity{
+
+  FloatingActionButton fab, fab1, fab2;
+  Animation fabOpen, fabClose, rotateForward, rotateBackward;
+  boolean isOpen=false;
+  
+  protected void onCreate(Bundle savedInstanceState){
+  
+    fab=(FloatingActionButton) findViewById(R.id.fab);
+    fab1=(FloatingActionButton) findViewById(R.id.fab1);
+    fab2=(FloatingActionButton) findViewById(R.id.fab2);
+    
+    fabOpen=AnimationUtils.loadAnimation(this,R.anim.fab_open);
+    fabClose=AnimationUtils.loadAnimation(this,R.anim.fab_close);
+    
+    rotateForward=AnimationUtils.loadAnimation(this,R.anim.rotate_forward);
+    rotateBackward=AnimationUtils.loadAnimation(this,R.anim.rotate_backward);
+    
+  }
+  
+    
+  private void animateFab(){
+    if(isOpen){
+      fab.startAnimation(rotateForward);
+      fab1.startAnimation(fabClose);
+      fab2.startAnimation(fabClose);
+      fab1.setClickable(false);
+      fab2.setClickable(false);
+      isOpen=false;
+    }
+    else{
+      fab.startAnimation(rotateBackward);
+      fab1.startAnimation(fabOpen);
+      fab2.startAnimation(fabOpen);
+      fab1.setClickable(true);
+      fab2.setClickable(true);
+      isOpen=true;
+    }
+    
+    
+    fab.setOnClickListener(new View.OnClickListener(){
+    
+      public void onClick(View v){
+        animateFab();
+      }
+    }
+    
+    fab1.SEton~~~
+    
+    fab2.setOn~~~`
+    
