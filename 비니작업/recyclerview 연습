@@ -1,0 +1,101 @@
+1.
+<android.support.v7.widget.RecyclerView
+  androi:id="@+id/recycler1"
+  android:scrollbars="vertical"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"/>
+  
+  
+2.
+<?xml version="1.0" encoding="utf-8"?>
+<andoid.support.constraint.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content">
+  
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_contetn"
+    android:id="@+id/text1"
+    android:textSize="32sp"/>
+    
+  <android.support.constraint.lConstraintLayout>
+  
+  
+  
+3.반드시 개발자가 어댑터 직접 구현, RecyclerView.Adapter를 상속 구현
+  
+  
+  public class SimpleTextAdapter extends RecyclerView.Adapter<SimpleTextAdapter.ViewHolder> {
+
+    private ArrayList<String> mData = null ;
+
+    // 아이템 뷰를 저장하는 뷰홀더 클래스.--> recylerview.adapter를 상속받아 어댑터내에서 구현 되었다.
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        TextView textView1 ;
+
+        ViewHolder(View itemView) {
+            super(itemView) ;
+
+            // 뷰 객체에 대한 참조. (hold strong reference)
+            textView1 = itemView.findViewById(R.id.text1) ;
+        }
+    }
+
+    // 생성자에서 데이터 리스트 객체를 전달받음.
+    SimpleTextAdapter(ArrayList<String> list) {
+        mData = list ;
+    }
+
+    // onCreateViewHolder() - 아이템 뷰를 위한 뷰홀더 객체 생성하여 리턴.
+ 
+    public SimpleTextAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        Context context = parent.getContext() ;
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) ;
+
+        View view = inflater.inflate(R.layout.recyclerview_item, parent, false) ;
+        SimpleTextAdapter.ViewHolder vh = new SimpleTextAdapter.ViewHolder(view) ;
+
+        return vh ;
+    }
+
+    // onBindViewHolder() - position에 해당하는 데이터를 뷰홀더의 아이템뷰에 표시.
+    @Override
+    public void onBindViewHolder(SimpleTextAdapter.ViewHolder holder, int position) {
+        String text = mData.get(position) ;
+        holder.textView1.setText(text) ;
+    }
+
+    // getItemCount() - 전체 데이터 갯수 리턴.
+    @Override
+    public int getItemCount() {
+        return mData.size() ;
+    }
+}
+  
+  
+  
+  
+  
+4. 각 객체 생성 후 setAdapter와 setLayoutManager를 통해 리사이클러뷰에 저장
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        // ... 코드 계속
+
+        // 리사이클러뷰에 표시할 데이터 리스트 생성.
+        ArrayList<String> list = new ArrayList<>();
+        for (int i=0; i<100; i++) {
+            list.add(String.format("TEXT %d", i)) ;
+        }
+
+        // 리사이클러뷰에 LinearLayoutManager 객체 지정.
+        RecyclerView recyclerView = findViewById(R.id.recycler1) ;
+        recyclerView.setLayoutManager(new LinearLayoutManager(this)) ;
+
+        // 리사이클러뷰에 SimpleTextAdapter 객체 지정.
+        SimpleTextAdapter adapter = new SimpleTextAdapter(list) ;
+        recyclerView.setAdapter(adapter) ;
+    }
