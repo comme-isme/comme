@@ -1,12 +1,13 @@
  //캡쳐버튼클릭
     public void mOnCaptureClick(View v){
         //전체화면
-        View rootView = getWindow().getDecorView();
+        View rootView = (View)findViewById(R.id.(내 뷰 아이디));
  
         File screenShot = ScreenShot(rootView);
         if(screenShot!=null){
             //갤러리에 추가
             sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(screenShot)));
+            Toast.makeText(getApplicationContext(), "저장 완료!", Toast.LENGTH_LONG).show();
         }
     }
  
@@ -32,3 +33,37 @@
         return file;
     }
 
+
+
+
+
+or
+
+
+
+
+
+public class Main extends Activity implements OnClickListener{
+    private LinearLayout container;
+    private Button captureButton;
+     
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.main);
+        container = (LinearLayout)findViewById(R.id.main_container);
+        captureButton = (Button)findViewById(R.id.main_capture);
+        captureButton.setOnClickListener(this);
+    }
+    
+    public void onClick(View v) {
+    container.buildDrawingCache();
+    Bitmap captureView = container.getDrawingCache();
+    FileOutputStream fos;
+    try {
+        fos = new FileOutputStream(Environment.getExternalStorageDirectory().toString()+"/capture.jpeg");
+        captureView.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+    } catch (FileNotFoundException e) {
+        e.printStackTrace();
+    }
+    Toast.makeText(getApplicationContext(), "Captured!", Toast.LENGTH_LONG).show();
+}
