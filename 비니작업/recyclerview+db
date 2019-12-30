@@ -1,0 +1,99 @@
+gradle script 더블 클릭
+build.gradle 더블 클릭
+맨 밑 {} 안에
+implematation 'androidx.recyclerview:recyclerview:1.0.0' -> 우측 상단의 sink now
+
+res 폴더-> layout -> main.xml
+text view 없애고
+
+1. 리사이클러뷰추가
+<recycle 의 첫번째 꺼 클릭해서 들어가고
+  android: layout_width="match_parent"
+  android: layout_height="match_parent"
+  android: id="@+id/recyclerView" />
+  
+  
+
+2.
+Public class User{
+  private String profile;
+  private String id;
+  pirvate int pw;
+  private String userName;
+  
+  public User(){}
+  
+  //alt+insert 눌러서 getter setter 클릭 전부 선택 ok
+}
+
+
+3. 아이템뷰 레이아웃 추가
+layout 우클릭-> new-> layout resource file
+  list_item
+  
+  
+  <LinearLayout
+    _width="match_parent"
+    _height="wrap_content"
+    android.orientation="horizontal>
+    
+    <ImageView
+      뭐 쭉죾
+      쭉쭉/>
+      
+    <LinearLayout
+      _width="match_parent"
+      _height="wrap_content"
+      android.orientation="vertical">
+      
+      <TextView
+        andoid:layout_margin="5dp"
+        
+        
+      
+    </LinearLayout>
+  </LinearLayout>
+  
+  
+
+
+
+4. adapter 만들기
+
+public CustomAdapter extends ~~~여긴 거의 똑같다. 쭉쭉 비슷하다.
+
+
+
+5.maintactivity -> tools->firebase-> realtime database-> correct to firebase -> firebase
+  add the realtime database to your app 눌러서 accept
+
+
+
+public class MainActivity extends AppCompatActivity{
+  
+  private RecyclerView recyclerView;
+  private RecyclerView.Adapter adapter;
+  private RecyclerView.LayoutManager layoutManager;
+  private ArrayList<User> arraylist;
+  private FirebaseDatabase database;
+  pirvate DatabaseReference dataReference;
+  
+  protected void onCreateBundle savedInstancestate){
+    super.onCreat
+    
+    
+    recyclerView=findViewById(R.id.recyclerView);
+    recyclerView.setHashFixedSize(true); //리사이클러뷰 성능강화
+    layoutManager=new LinearLayoutManager(context this);
+    recyclerView.setLayoutManager(layoutManager);
+    arrayList=new ArrayList<>(); //user 객체 담을 arraylist( 어댑터로 날린다)
+    
+    datatbase=FirebaseDatabase.getInstance();  // firebase 기능 연동
+    
+    databaseReference=database.getReference("User"); //db table 연결
+  }
+
+
+
+
+  
