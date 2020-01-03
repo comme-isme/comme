@@ -1,0 +1,63 @@
+1. 공유창
+
+- 공유를 할 수 있는 모든 앱을 표시하는 공유창을 오픈한다.
+
+Intent intent = new Intent();
+intent.setAction(Intent.ACTION_SEND);
+intent.setType("text/plain");
+intent.putExtra(Intent.EXTRA_SUBJECT, title);
+intent.putExtra(Intent.EXTRA_TEXT, content);
+
+Intent chooser = Intent.createChooser(intent, "공유");
+startActivity(chooser);
+
+
+
+
+2. SNS 하나만 구현
+
+
+1) Facebook
+
+Intent intent = new Intent();
+intent.setAction(Intent.ACTION_SEND);
+intent.setType("text/plain");
+intent.putExtra(Intent.EXTRA_SUBJECT, title);
+intent.putExtra(Intent.EXTRA_TEXT, content);
+
+PackageManager packManager = mContext.getPackageManager();
+List<ResolveInfo> resolvedInfoList = packManager.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
+
+boolean resolved = false;
+for(ResolveInfo resolveInfo: resolvedInfoList) {
+    if(resolveInfo.activityInfo.packageName.startsWith("com.facebook.katana")){
+        intent.setClassName(
+                resolveInfo.activityInfo.packageName,
+                resolveInfo.activityInfo.name );
+        resolved = true;
+        break;
+    }
+}
+
+if(resolved) {
+    startActivity(intent);
+
+} else {
+    Toast.makeText(MainActivity.this, "페이스북 앱이 없습니다.", Toast.LENGTH_SHORT).show();
+}
+
+
+2) 트위터
+
+Intent intent = new Intent();
+intent.setAction(Intent.ACTION_SEND);
+intent.setType("text/plain");
+intent.setPackage("com.twitter.android");
+intent.putExtra(Intent.EXTRA_SUBJECT, title);
+intent.putExtra(Intent.EXTRA_TEXT, content);
+
+try {
+    startActivity(intent);
+} catch (Exception e) {
+    Toast.makeText(MainActivity.this, "트위터 앱이 없습니다.", Toast.LENGTH_SHORT).show();
+}
