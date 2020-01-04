@@ -25,6 +25,28 @@ public class TalkManager : MonoBehaviour{
   }
   
   public string GetTalk(int id, int talkIndex){
+  
+    //예외처리(퀘스트 번호에 해당하는 번호가 없을때)
+    if(talkData.ContainsKey(talkIndex)){
+    
+      //퀘스트 기본 대화 있는 지 확인후 없다면 완전 기본 대사
+      if(talkData.ContainsKey(id-id%10)){
+         if(talkIndex==talkData[id-id%100].Length)
+           return null;
+         else
+          //퀘스트 대화순서 제거후 재 탐색
+          return talkData[id-id%100][talkIndex];
+      }
+      else{
+        //그렇지 않으면 퀘스트 기본 대사
+        if(talkIndex==talkData[id-id%10].Length)
+          return null;
+        else
+          //퀘스트 대화순서 제거후 재 탐색
+          return talkData[id-id%10][talkIndex];
+      }      
+    }
+  
     //처음[]는 dictionary 두번째는 배열
     if(talkIndex == talkData[id].Legth)
       return null;
