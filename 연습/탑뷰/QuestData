@@ -1,0 +1,6 @@
+
+
+public class QuestData {
+  public string questName;
+  public int[] npcId;  
+}
