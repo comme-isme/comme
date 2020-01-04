@@ -45,6 +45,11 @@ public class QuestManager : MonoBehaviour{
     return questList[questId].questName;
   }
   
+   public String CheckQuest(){
+    return questList[questId].questName;
+  }
+  
+  
   void NextQuest(){
     //다음 퀘스트로 넘어가기 위한 함수
     
