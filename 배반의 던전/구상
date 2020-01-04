@@ -13,6 +13,15 @@ room을 배치해 stage를 만드는 RoomManager
 Player가 할 UI들 관리하는 거 -> 심시티 같은 경영 게임 강의 
 
 
+stage clear 후 보상을 처리하는 GiftManager
+
+
+미니맵에서 boss의 움직임을 전하는 MiniMap
+
+
+
+
+
 Movement 클래스-monster,hero가 상속받는 클래스
 
 
