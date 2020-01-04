@@ -20,7 +20,8 @@ public class TalkManager : MonoBehaviour{
     talkData.Add(20+1000,new String[]{"루도의 동전?:1", "이 바보가.:1"});
     
     talkData.Add(20+2000,new String[]{"찾은면 꼭 가져다 줘.:1"});
-    talkData.Add(20+500
+    talkData.Add(20+5000,new String[]{"근처에서 동전을 찾았다."});
+    talkData.Add(21+2000,new String[]{"엇, 찾아줘서 고마워:2"});
   }
   
   public string GetTalk(int id, int talkIndex){
