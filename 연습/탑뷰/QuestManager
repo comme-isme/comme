@@ -3,13 +3,14 @@
 public class QuestManager : MonoBehaviour{
   
   public int QuestId;
-  Dictionary<int,QuestData> questlist;
+  Dictionary<int,QuestData> questList;
   
-  void start(){
-  
+  void awake(){
+    questList = new Dictionary<int, QuestData>();
+    GenerateData();
   }
   
-  void update(){
-  
+  void GenerateData(){
+    questList.Add(10, new QuestData()
   
   }
