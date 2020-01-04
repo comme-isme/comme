@@ -1,7 +1,10 @@
 
 
 public class QuestManager : MonoBehaviour{
-
+  
+  public int QuestId;
+  Dictionary<int,QuestData> questlist;
+  
   void start(){
   
   }
