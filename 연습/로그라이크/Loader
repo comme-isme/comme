@@ -1,0 +1,11 @@
+
+
+public class Loader : MonoBehavioiur{
+
+  public GameObject gameManager;
+  
+  void Awake(){
+    if(GameManger.instance==null)
+      Instantiate(gameManager);
+  }
+}
