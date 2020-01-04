@@ -18,11 +18,13 @@ using UnityEngine.UI;
 public class GameManger : MonoBehaviour
 {
   public TalkManager talkManager;
+  public QuestManager questManager;
   public GameObject talkPanel;
   public Text talkText;
   public GameObject scanObject;
   public bool isAction;
   public int talkIndex;
+  
   
   public void Action(GameObject scanObj){
     scanObject=scanObj;
@@ -31,8 +33,12 @@ public class GameManger : MonoBehaviour
     
     talkPanel.setActive(isAction);
   } 
+  
+  
   void Talk(int id, bool isNpc){
-    string talkData = talkManager.GetTalk(id, talkIndex);
+  
+    int questTalkIndex=questManager.GetQuestTalkIndex(id);
+    string talkData = talkManager.GetTalk(id+questTalkIndex, talkIndex);   //퀘스트 대화 데이터 id를 int로 반환해서 더해줘서 찾아가게
     
     if(talkData==null){
       isAction =false;
