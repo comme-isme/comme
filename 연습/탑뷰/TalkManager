@@ -11,6 +11,10 @@ public class TalkManager : MonoBehaviour{
     talkData.Add(1000, new string[]{ "안녕?", "이 곳에 처음이구나?"});
     talkData.Add(100, new string[]{ "평범한 나무상자다."});
     talkData.Add(200, new string[]{ "누군가 사용한 흔적이 있다."});
+    
+    
+    //quest Talk
+    talkData.Add(10+1000,new String[]{"어서와.:0", "이 마을에 놀라운 전설이 있다는데 : 1", "오른쪽 호수 쪽에 루도가 알려줄꺼야":2})
   }
   
   public string GetTalk(int id, int talkIndex){
