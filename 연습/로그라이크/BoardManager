@@ -7,18 +7,106 @@ using System;
 //list 사용 가능
 using System.Collections,Generic;
 
-
-
-
+using Random=UnityEngine.Random;
 
 public class BoardManager : MonoBehaviour{
 
-  void start(){
-  
+  [serializable]
+  public class Count{
+    public int minimum;
+    public int maximum;
+    
+    public count(int min, int max){
+      minimum=min;
+      maximum=max;
+    }
   }
   
-  void update(){
+  //게임 보드의 크기 8*8
+  public int columns=8;
+  public int rows=8;
   
+  //최소 5개의 벽과 최대 9개의 벽이 있다.
+  public Count wallCount=new Count(5,9);
+  public Count foodCount=new Count(1,5);
+  public GameObject exit;
+  
+  
+  public GameObject[] floorTiles;
+  public GameObject[] wallTiles;
+  public GameObject[] foodTiles;
+  public GameObject[] enemyTiles;
+  public GameObject[] outerWallTiles;
+  
+  //많은 오브젝트들을 boardHolder의 자식으로 설정, 지저분해지는 것을 방지 한다.
+  private Transform boardHolder;
+  
+  //오브젝트의 장소 추적
+  private List<Vector3> gridPositions=new List<Vector3>();
+  
+  
+  void InitializeList(){
+    gridPositions.Clear();
+    ne
+    for(int x=1;x<colums-1;x++){
+      for(int y=1;y<rows-1;y++){
+        //게임 상에서 오브젝트들이 있을 수 있는 위치 생성(왜...?)
+        gridPositions.Add(new Vector3(x,y,0f));
+      }
+  }
+  
+  
+  
+  void BoardSetup(){
+    boardHolder=new GameObject["Board"].transform;
+    
+    for(int x=-1;x<colums+1;x++){
+      for(int y=-1;y<rows+1;y++){
+        GameObject toInstantiate=floorTiles[Random.Range(0,floorTiles.Length)];
+        if(x==-1||x==columns||y==-1||y==rows)
+          toInstantiate=outerWallTiles(Random.Range(0,outerWallTiles.Lenth)];
+          
+        GameObject instance=Instantiate(toInstantiate,new Vector3(x,y,0f),Quaaternion.query) as GameObject;
+        
+        //인스턴스의 부모 오브젝트를 boardHolder로(깨끗하게 쓸라고(?))
+        instance.transform.SetParent(boardHolder);
+      }
+    }
+    
+    
+    //gridPositions(위치를) 가져와서 randomPosition에 넣고, 그 자리를 리턴
+    Vector3 RandomPosition(){
+      int randomIndex=Random.Range(0,gridPositions.Count);
+      Vector3 randomPosition=gridPositions(randomIndex);
+      gridPositions.RemoveAt(randomIndex);
+      
+      return randomPosition;
+    }
+    
+    
+    void LayoutObjectRandom(GameObject[] tileArray, int minimum, int maximum){
+      //오브젝트를 몇개나 스폰 할 지 지정
+      int ObjectCount=Random.Range(minimum,maximum+1);
+      for(int i=0; i<objectCount; i++){
+        vector3 randomPosition=RandomPosition();
+        GameObject tileChoice=tileArray[Random.Range(0,tileArray.Length)];
+        Instantiate(tileChoice, randomPosition, Quaternion.identity);
+      }
+    
+    }
+    
+    
+  }
+  //게임 매니저에서 호출 될 예정이라 public
+  void SetupScene(int level){
+    BoardSetup();
+    InitializeList();
+    LayoutObjectAtRandom(wallTiles,wallCount.minimum,wallCount.maximum);
+    LayoutObjectAtRandom(foodTiles,foodCount.minimum,foodCount.maximum);
+    //로그 함수에 따라 난이도가 높아짐
+    int enemyCount=(int)Mathf.Log(level,2f);
+    LayoutObjectAtRandom(foodTiles,enemyCount,enemyCount);
+    Instantiate(exit,new Vector3(columns-1,rows-1,0f),quaternion.identity);
   }
   
 }
