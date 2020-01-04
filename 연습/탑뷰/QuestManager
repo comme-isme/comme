@@ -4,6 +4,8 @@ public class QuestManager : MonoBehaviour{
   
   public int QuestId;
   public int questActionIndex;
+  public GameObject[] questObject;
+  
   Dictionary<int,QuestData> questList;
   
   void awake(){
@@ -27,6 +29,9 @@ public class QuestManager : MonoBehaviour{
   
   public String CheckQuest(int id){
   
+    //퀘스트 오브젝트 관리(대화 끝날 시)
+    ControlObject();
+  
     //특정 인물과 이야기했을 때만 증가
     if(id==questList[questId].npcId[questActionIndex])
       questActionIndex++; 
@@ -45,5 +50,21 @@ public class QuestManager : MonoBehaviour{
     
     //새로운 퀘스트를 시작했기에 초기화
     questActionIndex=0;
+  }
+  
+  
+  //퀘스트 오브젝트를 관리
+  void ControlObjext(questId){
+    switch(questId){
+      case 10:
+        if(questActionIndex==2)
+          //원래는 꺼져있다.(안 보인다.)
+          questObject[0].SetActive(true);
+        break;
+      case 20:
+        if(questActionIndex==1)
+          questObject[0].SetActive(false);
+        break;
+    
   }
 }
