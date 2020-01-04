@@ -11,6 +11,14 @@ public class QuestManager : MonoBehaviour{
   }
   
   void GenerateData(){
-    questList.Add(10, new QuestData()
+    questList.Add(10, new QuestData("마을 사람들과 대화하기", new int[]{1000,2000}))
   
   }
+  
+  public int GetQuestTalkIndex(int id){
+    //npc id를 받고 퀘스트 번호를 반환
+    
+    return questId;
+  }
+  
+}
