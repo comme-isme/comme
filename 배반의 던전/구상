@@ -1,0 +1,44 @@
+게임의 스테이지 등을 관리하는 GameManager
+
+
+hero, monster들의 스킬을 관리하는 SkillManager ( hero monster 따로 만들까?)
+
+
+board를 모아 하나의 room을 만드는 BoardManager
+
+
+room을 배치해 stage를 만드는 RoomManager
+
+
+Player가 할 UI들 관리하는 거 -> 심시티 같은 경영 게임 강의 
+
+
+Movement 클래스-monster,hero가 상속받는 클래스
+
+
+Hero 클래스- 영웅들이 상속받는 클래스
+  level
+  hp
+  mp
+  ability
+  isJustice
+  isTraitor
+  
+  
+  attack()
+  useSkill()
+  damaged()
+  
+  
+
+Monster클래스-몬스터들이 상속받는 클래스
+  level
+  hp
+  mp
+  isTraitor
+  isJustice
+  
+  attack()
+  damaged()
+  useSkill()
+  
