@@ -1,0 +1,24 @@
+
+//레벨 시작 할 때마다 랜덤 생성
+
+using Unityengine;
+//직렬화 속성 사용 가능
+using System;
+//list 사용 가능
+using System.Collections,Generic;
+
+
+
+
+
+public class BoardManager : MonoBehaviour{
+
+  void start(){
+  
+  }
+  
+  void update(){
+  
+  }
+  
+}
