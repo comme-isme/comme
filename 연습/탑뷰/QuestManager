@@ -1,0 +1,12 @@
+
+
+public class QuestManager : MonoBehaviour{
+
+  void start(){
+  
+  }
+  
+  void update(){
+  
+  
+  }
