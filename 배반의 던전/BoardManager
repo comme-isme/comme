@@ -1,0 +1,12 @@
+using Unityengine;
+using System;
+using System.Collections.Generic;
+
+using Random=UnityEngine.Random;
+
+public class BoardManager : MonoBehaviour{
+
+  [serializable]
+  public class Count{
+    public int minimum;
+    public
