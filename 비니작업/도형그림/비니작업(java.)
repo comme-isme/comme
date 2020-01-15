@@ -54,7 +54,7 @@ Public class MainActivity extends AppCompatActivity{
 		public void onClick(View v){
 			Random rnd = new Random();
 			BackgroundColor=Color.rgb(rnd.nextInt(255),rnd.nextInt(255),rnd.nextInt(255));
-			back.setBackgroundColor(BackgroundColor);
+			back.setBackgroundColor(BackgroundColor);  //view 자체에 할 수 있는 건지 
 		}
 	});
 	
