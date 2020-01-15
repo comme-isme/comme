@@ -1,6 +1,6 @@
 //import 할 거 하기
 
-Public class MaintActivity extends AppCompatActivity{
+Public class MainActivity extends AppCompatActivity{
 
 	private LinearLayout back;
 	Paint BackgroundColor=new Paint();
