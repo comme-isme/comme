@@ -99,3 +99,10 @@ public class MainActivity extends AppCompatActivity {
         SimpleTextAdapter adapter = new SimpleTextAdapter(list) ;
         recyclerView.setAdapter(adapter) ;
     }
+    
+    
+    
+    
+    
+    
+    https://anhana.tistory.com/12
