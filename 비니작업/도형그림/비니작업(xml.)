@@ -9,7 +9,14 @@
 	<RelativeLayout
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content">
-	
+		
+		<MyDraw
+			android:layout_width="match_parent"
+			android:layout_heigth="match_parent"
+		
+		/>
+		
+		
 		<ImageButton
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
