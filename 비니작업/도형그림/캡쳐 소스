@@ -1,7 +1,7 @@
  //캡쳐버튼클릭
     public void mOnCaptureClick(View v){
         //전체화면
-        View rootView = (View)findViewById(R.id.(내 뷰 아이디));
+        View rootView = (View)findViewById(R.id.myDraw);
  
         File screenShot = ScreenShot(rootView);
         if(screenShot!=null){
