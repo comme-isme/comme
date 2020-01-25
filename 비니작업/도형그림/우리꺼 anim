@@ -6,14 +6,6 @@ fab_open
     android : toAlpha="1.0"
     android : duration="300"
     android : interpolator="@android : anim/accelerate_interpolator"/>
-  
-  <translate
-    android : fromXDelta="색상 위치"
-    android : fromYDelta="색상 위치"
-    android : toXDelta="각자 위치"
-    android : toYDelta="각자 위치"
-    android : duration="각자 시간"
-    android : interpolator="@android : anim/accelerate_interpolator"/>
     
   <scale
     android : fromXScale="0.0"
@@ -37,14 +29,6 @@ fab_close
     android : fromAlpha="1.0"
     android : toAlpha="0.0"
     android : duration="300"
-    android : interpolator="@android : anim/accelerate_interpolator"/>
-  
-  <translate
-    android : fromXDelta="각자 위치"
-    android : fromYDelta="각자 위치"
-    android : toXDelta="색상 위치"
-    android : toYDelta="색상 위치"
-    android : duration="각자 시간"
     android : interpolator="@android : anim/accelerate_interpolator"/>
     
   <scale
