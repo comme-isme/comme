@@ -4,13 +4,9 @@ Public class MainActivity extends AppCompatActivity{
 
 	private LinearLayout back;
 	Paint BackgroundColor=new Paint();
-	private Button Btn6;
-	private Button Btn1;
-	private Button Btn2;
-	private Button Btn3;
-	private Button Btn4;
-	private Button Btn5;
-	
+	FloatingActionButton Btn6, Btn1, Btn2, Btn3, Btn4, Btn5;
+	Animation fabOpen, fabClose;
+	boolean isOpen=false;
 	
 
 	protected void onCreate(Bundle savedInstanceState){
@@ -18,16 +14,38 @@ Public class MainActivity extends AppCompatActivity{
 		setContentView(R.layout.activity_main);
 		
 		
-		Btn1=(Button)findViewById(R.id.WhiteBtn);
-		Btn2=(Button)findViewById(R.id.BlackBtn);
-		Btn3=(Button)findViewById(R.id.RndPaintBtn);
-		Btn4=(Button)findViewById(R.id.RndBackBtn);
-		Btn5=(Button)findViewById(R.id.ResetBtn);
-		Btn6=(Button)findViewById(R.id.PaletteBtn);
+		Btn1=(FloatingActionButton)findViewById(R.id.WhiteBtn);
+		Btn2=(FloatingActionButton)findViewById(R.id.BlackBtn);
+		Btn3=(FloatingActionButton)findViewById(R.id.RndPaintBtn);
+		Btn4=(FloatingActionButton)findViewById(R.id.RndBackBtn);
+		Btn5=(FloatingActionButton)findViewById(R.id.ResetBtn);
+		Btn6=(FloatingActionButton)findViewById(R.id.PaletteBtn);
+		
+		fabOpen=AnimationUtils.loadAnimation(this,R.anim.fab_open);
+		fabClose=AnimationUtils.loadAnimation(this,R.anim.fab_close);
 		
 		back=(LinearLayout)findViewById(R.id.mainlayout);
 		
 		BackgroundColor.setColor(Color.white);
+	}
+	
+	private void animateFab(){
+		if(isOpen){
+			Btn1.startAnimation(fabClose);
+			Btn2.startAnimation(fabClose);
+			Btn3.startAnimation(fabClose);
+			Btn4.startAnimation(fabClose);
+			Btn5.startAnimation(fabClose);
+			isOpen=false;
+		}
+		else{
+			Btn1.startAnimation(fabOpen);
+			Btn2.startAnimation(fabOpen);
+			Btn3.startAnimation(fabOpen);
+			Btn4.startAnimation(fabOpen);
+			Btn5.startAnimation(fabOpen);
+			isOpen=true;
+		}			
 	}
 	
 	
@@ -65,6 +83,11 @@ Public class MainActivity extends AppCompatActivity{
 		}
 	});
 	
+	Btn6.setOnClickListener(new View.OnClickListener(){
+		public void onClick(View v){
+			animateFab();
+		}
+	}
 }
 
 
