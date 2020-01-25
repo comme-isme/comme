@@ -93,6 +93,19 @@ Public class MainActivity extends AppCompatActivity{
 			animateFab();
 		}
 	}
+	
+	Capture.setOnClickListener(new View.OnClickListener(){
+		public void onClick(view V){
+			View rootView = (View)findViewById(R.id.myDraw);
+ 
+			File screenShot = ScreenShot(rootView);
+   		        if(screenShot!=null){
+           			 //갤러리에 추가
+          			 sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(screenShot)));
+         			 Toast.makeText(getApplicationContext(), "저장 완료!", Toast.LENGTH_LONG).show();
+		}
+	
+	}
 }
 
 
