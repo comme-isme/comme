@@ -31,6 +31,7 @@ Public class MainActivity extends AppCompatActivity{
 	
 	private void animateFab(){
 		if(isOpen){
+			//팔레트 버튼 애니메이션 추가
 			Btn1.startAnimation(fabClose);
 			Btn2.startAnimation(fabClose);
 			Btn3.startAnimation(fabClose);
@@ -39,6 +40,7 @@ Public class MainActivity extends AppCompatActivity{
 			isOpen=false;
 		}
 		else{
+			//팔레트 버튼 애니메이션 추가
 			Btn1.startAnimation(fabOpen);
 			Btn2.startAnimation(fabOpen);
 			Btn3.startAnimation(fabOpen);
