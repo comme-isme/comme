@@ -5,6 +5,7 @@ Public class MainActivity extends AppCompatActivity{
 	private LinearLayout back;
 	Paint BackgroundColor=new Paint();
 	FloatingActionButton Btn6, Btn1, Btn2, Btn3, Btn4, Btn5;
+	Button Capture, Share;
 	Animation fabOpen, fabClose;
 	boolean isOpen=false;
 	
@@ -20,6 +21,8 @@ Public class MainActivity extends AppCompatActivity{
 		Btn4=(FloatingActionButton)findViewById(R.id.RndBackBtn);
 		Btn5=(FloatingActionButton)findViewById(R.id.ResetBtn);
 		Btn6=(FloatingActionButton)findViewById(R.id.PaletteBtn);
+		Capture=(Button)findViewById(R.id.Capture);
+		Share=(Button)findViewById(R.id.Share);
 		
 		fabOpen=AnimationUtils.loadAnimation(this,R.anim.fab_open);
 		fabClose=AnimationUtils.loadAnimation(this,R.anim.fab_close);
