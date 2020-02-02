@@ -1,0 +1,70 @@
+
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.view.MotionEvent;
+import android.view.View;
+
+import java.util.Random;
+
+public class MyDraw extends View {
+    int sx,sy,ex,ey;	//직선 시작좌표 끝 좌표
+    int cx,cy;	//원 좌표
+    Random rnd=new Random();
+    int CircleSize;
+    Paint paintColor=new Paint();
+
+
+    private boolean circle=false;
+    private boolean line=false;
+
+    public MyDraw(Context context) {
+        super(context);
+        paintColor.setColor(Color.BLACK);
+    }
+
+
+
+
+    protected void onDraw(Canvas canvas){
+        if(circle){
+            canvas.drawCircle(cx,cy,CircleSize,paintColor);
+            circle=false;
+        }
+        else if(line){
+            canvas.drawLine(sx,sy,ex,sy,paintColor);
+            line=false;
+        }
+    }
+
+     public boolean onTouchEvent(MotionEvent event) {
+         cx = (int) event.getX();
+         cy = (int) event.getY();
+         if (event.getAction() == MotionEvent.ACTION_DOWN) {
+             sx = (int) event.getX();
+             sy = (int) event.getY();
+
+             if (rnd.nextInt(10) > 5) {
+                 CircleSize = rnd.nextInt(145) + 5;
+                 paintColor.setStrokeWidth(1f);//여기가 두께
+                 paintColor.setStyle(Paint.Style.STROKE);
+                 circle = true;
+                 invalidate();
+             } else {
+                 CircleSize = rnd.nextInt(145) + 5;
+                 paintColor.setStyle(Paint.Style.FILL);
+                 circle = true;
+                 invalidate();
+             }
+         }
+         else if (event.getAction() == MotionEvent.ACTION_MOVE) {
+             ex = (int) event.getX();
+             ey = (int) event.getY();
+             line = true;
+             invalidate();
+             }
+
+             return true;
+         }
+}
