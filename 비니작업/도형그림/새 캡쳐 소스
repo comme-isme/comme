@@ -68,7 +68,7 @@ public class MainActivity extends Activity {
 
                 
 
-                String folder = "Test_Directory"; // 폴더 이름
+                String folder = "Shapeart"; // 폴더 이름
 
                 
 
