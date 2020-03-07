@@ -67,3 +67,8 @@ public class Main extends Activity implements OnClickListener{
     }
     Toast.makeText(getApplicationContext(), "Captured!", Toast.LENGTH_LONG).show();
 }
+
+
+
+
+http://www.omnibuscode.com/board/board_mobile/40813
