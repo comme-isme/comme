@@ -18,16 +18,18 @@ public class Main extends AppcompatActivity{
     
     LetterPageBtn=(ImageButton) findViewById(R.id.LetterPageBtn);
     TextView Money=(TextView) findViewById(R.id.Money);
-    
-    
-    int money=0;
-    
-    
-    public void setMoney(){
-      Money.setText(money);
-    }
-    
-    
   }
-
+      
+    
+  int money=0;
+    
+    
+  public void setMoney(){
+    Money.setText(money);
+  }
+    
+    
 }
+
+
+
