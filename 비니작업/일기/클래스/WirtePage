@@ -1,4 +1,18 @@
 public class WritePage extends AppCompatActivity{
+
+  EditView title;
+  EditView diary;
+  
+  ImageButton emotionBtn;
+  ImageButton saveBtn;
+  ImageButton closeBtn;
+
+  DBHelper dbHelper;
+
+  final static String dbName="diarys.db"
+  final static int dbVersion=2;
+
+
   protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_writePage);
@@ -10,5 +24,12 @@ public class WritePage extends AppCompatActivity{
         ImageButton saveBtn=(ImageButton) findViewById(R.id.saveBtn);
         ImageButton closeBtn=(ImageButton) findViewById(R.id.closeBtn);
         
+        
+        
+        dbHelper = new DBHelper(this, dbName, null, dbVersion);
   }
+  
+  
+  
+  
 }
