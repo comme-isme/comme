@@ -1,6 +1,14 @@
 
 
 public class MainPage extends AppcompatActivity{
+
+  ImageButton WritePageBtn;
+  ImageButton ListPageBtn;
+  ImageButton TryPageBtn;
+  ImageButton ShopPageBtn;
+  ImageButton SettingPageBtn;
+  
+  int money=0;
   
   protected void onCreate(Bundle savedInstanceState){
     super.onCereate(savedInsranceState);
@@ -18,10 +26,12 @@ public class MainPage extends AppcompatActivity{
     
     LetterPageBtn=(ImageButton) findViewById(R.id.LetterPageBtn);
     TextView Money=(TextView) findViewById(R.id.Money);
+    
+    
   }
       
     
-  int money=0;
+  
     
     
   public void setMoney(){
