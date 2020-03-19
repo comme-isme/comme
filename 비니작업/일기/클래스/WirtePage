@@ -11,9 +11,4 @@ public class WritePage extends AppCompatActivity{
         ImageButton closeBtn=(ImageButton) findViewById(R.id.closeBtn);
         
   }
-  
-  
-  
-
-
 }
