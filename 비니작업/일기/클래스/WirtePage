@@ -1,7 +1,7 @@
 public class WritePage extends AppCompatActivity{
 
-  EditView title;
-  EditView diary;
+  EditView titleEdit;
+  EditView diaryEdit;
   
   ImageButton emotionBtn;
   ImageButton saveBtn;
@@ -17,8 +17,8 @@ public class WritePage extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_writePage);
         
-        EditView title=(EditView) findViewById(R.id.title);
-        EditView diary=(EditView) findViewById(R.id.diary);
+        EditView titleEdit=(EditView) findViewById(R.id.titleEdit);
+        EditView diaryEdit=(EditView) findViewById(R.id.diaryEdit);
         
         ImageButton emotionBtn=(ImageButton) findViewById(R.id.emotionBtn);
         ImageButton saveBtn=(ImageButton) findViewById(R.id.saveBtn);
@@ -31,7 +31,12 @@ public class WritePage extends AppCompatActivity{
   
   saveBtn.setOnClickListener(new View.OnClickListener(){
     public void onClick(View view){
+      String title = titleEdit.getText().toString();
+      String diary = diaryEdit.getText().toString();
       
+      db=dbHelper.getWritableDatabase();
+      sql=String.format("INSERT INTO 
+      Toast.makeText(getApplicationContext(),"저장되었습니다.",Toast.LENGTH_LONG).show();
     }
   });
   
