@@ -1,0 +1,33 @@
+
+
+public class Main extends AppcompatActivity{
+  
+  protected void onCreate(Bundle savedInstanceState){
+    super.onCereate(savedInsranceState);
+    setContentView(R.layout.activity_main);
+    
+    
+    WritePageBtn=(ImageButton) findViewById(R.id.WritePageBtn);
+    ListPageBtn=(ImageButton) findViewById(R.id.ListPageBtn);
+    TryPageBtn=(ImageButton) findViewById(R.id.TryPageBtn);
+    ShopPageBtn=(ImageButton) findViewById(R.id.ShopPageBtn);
+    SettingPageBtn=(ImageButton) findViewById(R.id.SettingPageBtn);
+    
+    
+    emotion ----> 이런 건 어떻게 해야 하누
+    
+    LetterPageBtn=(ImageButton) findViewById(R.id.LetterPageBtn);
+    TextView Money=(TextView) findViewById(R.id.Money);
+    
+    
+    int money=0;
+    
+    
+    public void setMoney(){
+      Money.setText(money);
+    }
+    
+    
+  }
+
+}
