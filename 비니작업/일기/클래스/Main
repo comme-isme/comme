@@ -1,6 +1,6 @@
 
 
-public class Main extends AppcompatActivity{
+public class MainPage extends AppcompatActivity{
   
   protected void onCreate(Bundle savedInstanceState){
     super.onCereate(savedInsranceState);
