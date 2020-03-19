@@ -42,30 +42,35 @@ public class MainPage extends AppcompatActivity{
   WritePageBtn.setOnClickListener(new View.OnClickListener(){
     public void onClick(View view){
       Intent intent = new Intent(this, WritePage.class);
+      startActivity(intetn);
     }
   });
   
    ListPageBtn.setOnClickListener(new View.OnClickListener(){
     public void onClick(View view){
       Intent intent = new Intent(this, ListPage.class);
+      startActivity(intetn);
     }
   });
   
    ShopPageBtn.setOnClickListener(new View.OnClickListener(){
     public void onClick(View view){
       Intent intent = new Intent(this, Shop.class);
+      startActivity(intetn);
     }
   });
   
    TryPageBtn.setOnClickListener(new View.OnClickListener(){
     public void onClick(View view){
       Intent intent = new Intent(this, TryPage.class);
+      startActivity(intetn);
     }
   });
   
    SettingPageBtn.setOnClickListener(new View.OnClickListener(){
     public void onClick(View view){
       Intent intent = new Intent(this, SettingPage.class);
+      startActivity(intetn);
     }
   });
   
