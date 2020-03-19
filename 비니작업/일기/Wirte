@@ -1,0 +1,19 @@
+public class WritePage extends AppCompatActivity{
+  protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_writePage);
+        
+        EditView title=(EditView) findViewById(R.id.title);
+        EditView diary=(EditView) findViewById(R.id.diary);
+        
+        ImageButton emotionBtn=(ImageButton) findViewById(R.id.emotionBtn);
+        ImageButton saveBtn=(ImageButton) findViewById(R.id.saveBtn);
+        ImageButton closeBtn=(ImageButton) findViewById(R.id.closeBtn);
+        
+  }
+  
+  
+  
+
+
+}
