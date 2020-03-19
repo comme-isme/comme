@@ -27,8 +27,38 @@ public class Main extends AppcompatActivity{
   public void setMoney(){
     Money.setText(money);
   }
-    
-    
+  
+  
+  WritePageBtn.setOnClickListener(new View.OnClickListener(){
+    public void onClick(View view){
+      Intent intent = new Intent(this, WritePage.class);
+    }
+  });
+  
+   ListPageBtn.setOnClickListener(new View.OnClickListener(){
+    public void onClick(View view){
+      Intent intent = new Intent(this, ListPage.class);
+    }
+  });
+  
+   ShopPageBtn.setOnClickListener(new View.OnClickListener(){
+    public void onClick(View view){
+      Intent intent = new Intent(this, Shop.class);
+    }
+  });
+  
+   TryPageBtn.setOnClickListener(new View.OnClickListener(){
+    public void onClick(View view){
+      Intent intent = new Intent(this, TryPage.class);
+    }
+  });
+  
+   SettingPageBtn.setOnClickListener(new View.OnClickListener(){
+    public void onClick(View view){
+      Intent intent = new Intent(this, SettingPage.class);
+    }
+  });
+  
 }
 
 
