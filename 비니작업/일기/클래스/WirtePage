@@ -29,6 +29,11 @@ public class WritePage extends AppCompatActivity{
         dbHelper = new DBHelper(this, dbName, null, dbVersion);
   }
   
+  saveBtn.setOnClickListener(new View.OnClickListener(){
+    public void onClick(View view){
+      
+    }
+  });
   
   
   
