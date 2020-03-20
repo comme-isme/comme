@@ -8,10 +8,20 @@ public class WritePage extends AppCompatActivity{
   ImageButton closeBtn;
 
   DBHelper dbHelper;
+  
+  int emotion=0;
 
 
   final static String dbName="diarys.db"
   final static int dbVersion=2;
+  
+  
+  SQLiteDatabase db;
+  String sql;
+  long now = System.currentTimeMillis();
+  Date date = new Date(now);
+  SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+  String getTime = sdf.format(date);
 
 
   protected void onCreate(Bundle savedInstanceState) {
@@ -30,13 +40,20 @@ public class WritePage extends AppCompatActivity{
         dbHelper = new DBHelper(this, dbName, null, dbVersion);
   }
   
+  
+  emotionBtn.setOnClickListener(new View.OnClickListener(){
+    //슬라이드로만들어서 뭐뭐 하기
+    emotion=num;
+  });
+  
   saveBtn.setOnClickListener(new View.OnClickListener(){
     public void onClick(View view){
+    
       String title = titleEdit.getText().toString();
       String diary = diaryEdit.getText().toString();
       
       db=dbHelper.getWritableDatabase();
-      sql=String.format("INSERT INTO diarys VALUES("+getTime+","+기분+", "+title+", "+diary+", "0");");
+      sql=String.format("INSERT INTO diarys VALUES("+getTime+","+emotion+", "+title+", "+diary+", "0");");
       
       db.execSQL(sql);
       
