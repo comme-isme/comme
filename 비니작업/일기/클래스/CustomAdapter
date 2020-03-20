@@ -14,24 +14,24 @@ import java.util.ArrayList;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomViewHolder> {
 
-    private ArrayList<Dictionary> mList;
+    private ArrayList<List> mList;
 
     public class CustomViewHolder extends RecyclerView.ViewHolder {
-        protected TextView id;
-        protected TextView english;
-        protected TextView korean;
+        protected TextView today;
+        protected TextView title;
+        protected TextView diary;
 
 
         public CustomViewHolder(View view) {
             super(view);
-            this.id = (TextView) view.findViewById(R.id.id_listitem);
-            this.english = (TextView) view.findViewById(R.id.english_listitem);
-            this.korean = (TextView) view.findViewById(R.id.korean_listitem);
+            this.todayView = (TextView) view.findViewById(R.id.todayView);
+            this.titleView = (TextView) view.findViewById(R.id.titleView);
+            this.diaryView = (TextView) view.findViewById(R.id.diaryView);
         }
     }
 
 
-    public CustomAdapter(ArrayList<Dictionary> list) {
+    public CustomAdapter(ArrayList<List> list) {
         this.mList = list;
     }
 
@@ -40,8 +40,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
     @Override
     public CustomViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
 
-        View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.item_list, viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_list, viewGroup, false);
 
         CustomViewHolder viewHolder = new CustomViewHolder(view);
 
@@ -53,19 +52,21 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder viewholder, int position) {
 
-        viewholder.id.setTextSize(TypedValue.COMPLEX_UNIT_SP, 25);
-        viewholder.english.setTextSize(TypedValue.COMPLEX_UNIT_SP, 25);
-        viewholder.korean.setTextSize(TypedValue.COMPLEX_UNIT_SP, 25);
+        //리스트 설정
+        
+        viewholder.todayView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 25);
+        viewholder.titleView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 25);
+        viewholder.diaryView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 25);
 
-        viewholder.id.setGravity(Gravity.CENTER);
-        viewholder.english.setGravity(Gravity.CENTER);
-        viewholder.korean.setGravity(Gravity.CENTER);
+        viewholder.todayView.setGravity(Gravity.CENTER);
+        viewholder.titeView.setGravity(Gravity.CENTER);
+        viewholder.diaryView.setGravity(Gravity.CENTER);
 
 
 
-        viewholder.id.setText(mList.get(position).getId());
-        viewholder.english.setText(mList.get(position).getEnglish());
-        viewholder.korean.setText(mList.get(position).getKorean());
+        viewholder.todayView.setText(mList.get(position).gettoday());
+        viewholder.titleView.setText(mList.get(position).gettitle());
+        viewholder.diaryView.setText(mList.get(position).getdiary());
     }
 
     @Override
