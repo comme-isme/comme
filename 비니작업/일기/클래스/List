@@ -1,6 +1,6 @@
 package com.tistory.webnautes.userecyclerview;
 
-public class ListPage{
+public class List{
 
   private Data today;
   private String title;
