@@ -1,0 +1,16 @@
+package com.tistory.webnautes.userecyclerview;
+
+public class ListPage{
+
+  private Data today;
+  private String title;
+  private String diary;
+  
+  getter와 setter 넣기
+  
+  오른쪽 마우스 generate -> getter & setter
+  
+  생성자 넣기
+  
+  오른쪽 마우스 generate -> construtor
+}
