@@ -79,6 +79,15 @@ public class MainPage extends AppcompatActivity{
     }
   });
   
+  
+  recieveBtn.setOnClickListener(new View.OnClickListener(){
+    public void onClick(View view){
+      
+      //랜덤 데이터베이스 추출
+      
+    }
+  });
+  
 }
 
 
