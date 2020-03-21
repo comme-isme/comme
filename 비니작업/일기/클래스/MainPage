@@ -7,6 +7,11 @@ public class MainPage extends AppcompatActivity{
   ImageButton TryPageBtn;
   ImageButton ShopPageBtn;
   ImageButton SettingPageBtn;
+  ImageButton LetterPageBtn;
+  
+  ImageButton emotionBtn;
+  ImageButton recieveBtn;
+  
   
   int money=0;
   
@@ -20,14 +25,14 @@ public class MainPage extends AppcompatActivity{
     TryPageBtn=(ImageButton) findViewById(R.id.TryPageBtn);
     ShopPageBtn=(ImageButton) findViewById(R.id.ShopPageBtn);
     SettingPageBtn=(ImageButton) findViewById(R.id.SettingPageBtn);
-    
-    
-    emotion ----> 이런 건 어떻게 해야 하누
-    
     LetterPageBtn=(ImageButton) findViewById(R.id.LetterPageBtn);
+    
+    
     TextView Money=(TextView) findViewById(R.id.Money);
     
     
+    emotionBtn=(ImageButton) findViewById(R.id.emotionBtn);
+    recieveBtn=(ImageButton) findViewById(R.id.recieveBtn);
   }
       
     
