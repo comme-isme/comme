@@ -53,7 +53,7 @@ public class WritePage extends AppCompatActivity{
       String diary = diaryEdit.getText().toString();
       
       db=dbHelper.getWritableDatabase();
-      sql=String.format("INSERT INTO diarys VALUES("+getTime+","+emotion+", "+title+", "+diary+", "0");");
+      sql=String.format("INSERT INTO diarys VALUES("+getTime+","+emotion+", "+title+", "+diary+", "+getTime+");");
       
       db.execSQL(sql);
       
