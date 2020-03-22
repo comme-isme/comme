@@ -1,12 +1,22 @@
 public class LetterPage extends AppCompatActivity{
   
-  
+  Random rnd;
   
   protected void onCreate(Bundle savedInstanceState){
     super.onCereate(savedInsranceState);
     setContentView(R.layout.activity_letter);
+    
+    rnd=new Random();
+    
+
+    int num=rnd.nextInt(cursor.getCount())
+  
+    cursor.getPosition(num);
+  
+  
+    cursor.getText(1);   //date
+    cursor.getText(2);   //emotion
+    cursor.getText(3);   //title
+    cursor.getText(4);   //diary
   }
-
-
-  //activity_letter에서 textview 가져와서, db내용 가져와서 textview 안에 넣기
 }
