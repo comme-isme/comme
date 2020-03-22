@@ -7,4 +7,6 @@ public class LetterPage extends AppCompatActivity{
     setContentView(R.layout.activity_letter);
   }
 
+
+  //activity_letter에서 textview 가져와서, db내용 가져와서 textview 안에 넣기
 }
