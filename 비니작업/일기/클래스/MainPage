@@ -25,14 +25,13 @@ public class MainPage extends AppcompatActivity{
     TryPageBtn=(ImageButton) findViewById(R.id.TryPageBtn);
     ShopPageBtn=(ImageButton) findViewById(R.id.ShopPageBtn);
     SettingPageBtn=(ImageButton) findViewById(R.id.SettingPageBtn);
-    LetterPageBtn=(ImageButton) findViewById(R.id.LetterPageBtn);
+    LetterPageBtn=(ImageButton) findViewById(R.id.LetterPageBtn);   //얘가 recive
     
     
     TextView Money=(TextView) findViewById(R.id.Money);
     
     
     emotionBtn=(ImageButton) findViewById(R.id.emotionBtn);
-    recieveBtn=(ImageButton) findViewById(R.id.recieveBtn);
   }
       
     
@@ -79,12 +78,10 @@ public class MainPage extends AppcompatActivity{
     }
   });
   
-  
-  recieveBtn.setOnClickListener(new View.OnClickListener(){
+   LetterPageBtn.setOnClickListener(new View.OnClickListener(){
     public void onClick(View view){
-      
-      //랜덤 데이터베이스 추출
-      
+      Intent intent = new Intent(this, LetterPage.class);
+      startActivity(intent);
     }
   });
   
