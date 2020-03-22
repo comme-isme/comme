@@ -1,5 +1,10 @@
 public class LetterPage extends AppCompatActivity{
   
-
+  
+  
+  protected void onCreate(Bundle savedInstanceState){
+    super.onCereate(savedInsranceState);
+    setContentView(R.layout.activity_letter);
+  }
 
 }
