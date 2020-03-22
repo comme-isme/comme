@@ -22,7 +22,7 @@ public class WritePage extends AppCompatActivity{
   Date date = new Date(now);
   SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
   String getTime = sdf.format(date);
-
+  
 
   protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +53,7 @@ public class WritePage extends AppCompatActivity{
       String diary = diaryEdit.getText().toString();
       
       db=dbHelper.getWritableDatabase();
-      sql=String.format("INSERT INTO diarys VALUES("+getTime+","+emotion+", "+title+", "+diary+", "+getTime+");");
+      sql=String.format("INSERT INTO diarys VALUES("+getTime+","+emotion+", "+title+", "+diary+", "+date+");");
       
       db.execSQL(sql);
       
