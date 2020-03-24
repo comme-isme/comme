@@ -80,7 +80,7 @@ public class WritePage extends AppCompatActivity{
     public void onClick(View view){
       finish();      
     }  
-  }
+  });
   
   
 }
