@@ -3,6 +3,8 @@ public class WritePage extends AppCompatActivity{
   EditView titleEdit;
   EditView diaryEdit;
   
+  TextView dateView;
+  
   ImageButton emotionBtn;
   ImageButton saveBtn;
   ImageButton closeBtn;
@@ -28,8 +30,13 @@ public class WritePage extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_writePage);
         
+        TextView dateView=(TextView) findViewById(R.id.dateView);
+        dateView.setText(getTime);
+        
         EditView titleEdit=(EditView) findViewById(R.id.titleEdit);
         EditView diaryEdit=(EditView) findViewById(R.id.diaryEdit);
+        diaryView.setMovementMethod(new ScrollingMovementMehtod());
+        
         
         ImageButton emotionBtn=(ImageButton) findViewById(R.id.emotionBtn);
         ImageButton saveBtn=(ImageButton) findViewById(R.id.saveBtn);
