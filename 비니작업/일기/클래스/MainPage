@@ -13,7 +13,14 @@ public class MainPage extends AppcompatActivity{
   ImageButton recieveBtn;
   
   
+  ImageView moneyBox;
+  
+  
+  TextView money;
+  
+  
   int money=0;
+  int mainEmotion=1;
   
   protected void onCreate(Bundle savedInstanceState){
     super.onCereate(savedInsranceState);
@@ -36,12 +43,44 @@ public class MainPage extends AppcompatActivity{
       
     
   
+  //money 함수  
     
-    
-  public void setMoney(){
+  public void showMoney(){
     Money.setText(money);
   }
   
+  
+  public int getMoney(){
+    return money;  
+  }
+  
+  public void sumMoney(int i){
+    money=money+i;    
+  }
+  
+  //날씨들
+  
+  public void setEmotion(int t){
+    mainEmotion=t;
+  }
+  
+  public int getEmotion(){[
+    return mainEmotion;
+  }
+  
+  public void changeEmotion(){
+    if(mainEmotion=1)
+      어떤 이미지
+      
+      .
+      .
+      .
+      
+  }
+  
+  
+  
+  //버튼들
   
   WritePageBtn.setOnClickListener(new View.OnClickListener(){
     public void onClick(View view){
