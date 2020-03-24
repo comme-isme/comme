@@ -1,5 +1,42 @@
 public class ReadPage extends AppcompatActivity{
-  protected
+
+  TextView dateView;
+  TextView titleView;
+  TextView diaryView;
+  
+  ImageView emotionView;
+  
+  ImageButton editBtn;
+  ImageButton closeBtn;
 
 
+  protected void onCreate(Bundle savedInstanceState){
+    super.onCereate(savedInsranceState);
+    setContentView(R.layout.ReadPage);
+    
+    dateView=(TextView) findViewById(R.id.dateView);
+    titleView=(TextView) findViewById(R.id.titleView);
+    diaryView=(TextView) findViewById(R.id.diaryView);
+    
+    emotionView=(ImageView) findViewById(R.id.emotionView);
+    
+    editBtn=(ImageButton) findViewById(R.id.eidtBtn);
+    closeBtn=(ImageButton) findViewById(R.id.closeBtn);
+  }
+  
+  
+  editBtn.setOnClickListener(new View.OnClickListener(){
+    public void onClick(View view){
+      Intent intent=new Intent(this, WritePage);
+      startActivity(intent);
+    }
+  });
+  
+  
+  closeBtn.setOnClickListener(new View.OnClickListener(){
+    public void onClick(View view){
+      finish();      
+    }  
+  });
+  
 }
