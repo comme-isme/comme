@@ -9,7 +9,7 @@ public class WritePage extends AppCompatActivity{
 
   DBHelper dbHelper;
   
-  int emotion=0;
+  int writeEmotion=0;
 
 
   final static String dbName="diarys.db"
@@ -41,9 +41,15 @@ public class WritePage extends AppCompatActivity{
   }
   
   
+  //버튼들
+  
+  
   emotionBtn.setOnClickListener(new View.OnClickListener(){
     //슬라이드로만들어서 뭐뭐 하기
-    emotion=num;
+    public void onClick(View view){
+    
+      writeEmotion=num;
+    }
   });
   
   saveBtn.setOnClickListener(new View.OnClickListener(){
@@ -62,6 +68,12 @@ public class WritePage extends AppCompatActivity{
     }
   });
   
+  
+  closeBtn.setOnClickListener(new View.OnClickListener(){
+    public void onClick(View view){
+      finish();      
+    }  
+  }
   
   
 }
