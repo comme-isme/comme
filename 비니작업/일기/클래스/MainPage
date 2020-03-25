@@ -23,7 +23,7 @@ public class MainPage extends AppcompatActivity{
   int mainEmotion=1;
   
   protected void onCreate(Bundle savedInstanceState){
-    super.onCereate(savedInsranceState);
+    super.onCreate(savedInsranceState);
     setContentView(R.layout.activity_main);
     
     
