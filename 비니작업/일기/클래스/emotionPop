@@ -1,0 +1,49 @@
+public class emotionPop extends AppcompatActivity{
+
+  ImageButton angry;
+  ImageButton happy;
+  ImageButton sad;
+  ImageButton letter;
+  ImageButton willness;
+  
+  TextView.
+  
+  ..
+  
+  
+  int popEmotion;
+  
+
+  protected void onCreate(Bundle savedInstanceState){
+    super.onCreate(savedInstanceState);
+    setContenetView(R.layout.emotionPop);
+    
+    angry=(ImageButton) findViewById(R.id.angry);
+    happy=(ImageButton) findViewById(R.id.happy);
+    sad=(ImageButton) findViewById(R.id.sad);
+    letter=(ImageButton) findViewById(R.id.letter);
+    willness=(ImageButton) findViewById(R.id.willness);
+    
+    textView
+    .
+    .
+    
+  }
+  
+  public void setEmotion(int i){
+    popEmotion=i;
+  }
+  
+  
+  public int getEmotion(){
+    return popEmotion;
+  }
+  
+  
+  angry.setOnClickListener(new View.OnClickListener(){
+    public void onClick(View view){
+      setEmotion(i);
+    }
+  });
+
+}
