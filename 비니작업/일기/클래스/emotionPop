@@ -39,11 +39,17 @@ public class emotionPop extends AppcompatActivity{
     return popEmotion;
   }
   
+  public void finishEmotion(){
+    
+    Intent intent = new Intent();
+    intent.putExtra("result", getEmotion());
+    setResult(RESULT_OK,intent);
+    finish();
+  }
   
   angry.setOnClickListener(new View.OnClickListener(){
     public void onClick(View view){
       setEmotion(i);
     }
   });
-
 }
