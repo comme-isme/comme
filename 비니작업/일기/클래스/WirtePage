@@ -86,9 +86,9 @@ public class WritePage extends AppCompatActivity{
     super.onActivityResult(requestCode, resultCode, data);
     
     if(requestCode==2){
-      wirteEmotion=resultCode;
+      if(resultCode==Activity.RESULT_OK){
+        writeEmotion=result;
+      }
     }
   }
-  
-  
 }
