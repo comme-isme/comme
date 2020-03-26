@@ -128,7 +128,9 @@ public class MainPage extends AppcompatActivity{
     super.onActivityResult(requestCode, resultCode, data);
     
     if(requestCode==1){
-      mainEmotion=resultCode;
+      if(resultCode==Activity.RESULT_OK){
+        mainEmotion=result;
+      }
     }
   }
 }
