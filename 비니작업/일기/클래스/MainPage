@@ -124,11 +124,18 @@ public class MainPage extends AppcompatActivity{
     }
   });
   
+  emotionBtn.setOnClickListener(new View.OnClickListener(){
+    public void onClick(View view){
+      Intent intent = new Inent(this, emotionPage.class);
+      startActivityForResult(intent, 1);
+    }
+  }
+  
   protected void onActivityResult(int requestCode, int resultCode, Intent data){
     super.onActivityResult(requestCode, resultCode, data);
     
     if(requestCode==1){
-      if(resultCode==Activity.RESULT_OK){
+      if(resultCode==RESULT_OK){
         mainEmotion=result;
       }
     }
